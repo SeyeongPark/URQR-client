@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const InputData = (props) => {
-    const API_BASE = "http://localhost:3001";
+    const API_BASE = "https://sptech-urqr-api.herokuapp.com";
     
     const [card, setCard] = useState([]);
     const [codeText, setCodeText] = useState('');

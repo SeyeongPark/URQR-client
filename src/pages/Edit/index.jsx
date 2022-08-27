@@ -4,7 +4,7 @@ import 'animate.css';
 
 const EditCard  = (props) => {
     const URL_BASE = "http://localhost:3000";
-    const API_BASE = "http://localhost:3001";
+    const API_BASE = "https://sptech-urqr-api.herokuapp.com";
     
     let [cardInfo, setCardInfo] = useState([]);
     let submitCard = {};

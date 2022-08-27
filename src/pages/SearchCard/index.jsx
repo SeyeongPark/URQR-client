@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 
 function SearchCard() {
     
-    const API_BASE = "http://localhost:3001";
+    const API_BASE = "https://sptech-urqr-api.herokuapp.com";
     const URL_BASE = "http://localhost:3000";
 
     const [cardInfo, setCardInfo] = useState([])
