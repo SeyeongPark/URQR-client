@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import 'animate.css';
 
 const EditCard  = (props) => {
-    const URL_BASE = "http://localhost:3000";
+    const URL_BASE = "https://sptech-urqr.herokuapp.com";
     const API_BASE = "https://sptech-urqr-api.herokuapp.com";
     
     let [cardInfo, setCardInfo] = useState([]);
