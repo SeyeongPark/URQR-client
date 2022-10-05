@@ -6,7 +6,11 @@ import { useEffect } from 'react';
 function SearchCard() {
     
     const API_BASE = "https://sptech-urqr-api.herokuapp.com";
-    const URL_BASE = "https://sptech-urqr.herokuapp.com";
+    // const API_BASE = "http://localhost:3001";
+
+    // const URL_BASE = "https://sptech-urqr.herokuapp.com";
+    const URL_BASE = "http://localhost:3000";
+
 
     const [cardInfo, setCardInfo] = useState([])
     const [qrCode, setQrCode] = useState("")
@@ -47,7 +51,7 @@ function SearchCard() {
                         <div key={card._id}>
                     <div className="card-item__title">
                         <div className="input_card-item__NameTitle">First Name</div>
-                        <div className="input_card-item__NameTitle">Last Name</div>
+                        <div className="input_card_item_col2_NameTitle">Last Name</div>
                     </div>
                         <input value={card.firstName} disabled/>
                         <input value={card.lastName} disabled/>
@@ -57,7 +61,7 @@ function SearchCard() {
                     </div>
                     <div className="card-item__title">
                         <div className="input_card-item__NameTitle">Home Phone</div>
-                        <div className="input_card-item__NameTitle">Cell Phone</div>
+                        <div className="input_card_item_col2_NameTitle">Cell Phone</div>
                     </div>
                     <div>
                         <input value={card.homePhone} disabled/>
@@ -66,7 +70,7 @@ function SearchCard() {
                     <div>
                     <div className="card-item__title">
                         <div className="input_card-item__NameTitle">School Name</div>
-                        <div className="input_card-item__NameTitle">School Phone</div>
+                        <div className="input_card_item_col2_NameTitle">School Phone</div>
                     </div>
                         <input value={card.schoolName} disabled/>
                         <input value={card.schoolPhone} disabled/>
@@ -74,6 +78,10 @@ function SearchCard() {
                     <div>
                         <div className="input_card-item__NameTitle">Special Information</div>
                         <textarea value={card.addInfo} disabled/>
+                    </div>
+
+                    <div className="qr-code-container">
+                            <img src={card.imageUrl}/>
                     </div>
                 </div>    
                 ))}

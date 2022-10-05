@@ -7,7 +7,10 @@ import { useEffect } from 'react';
 function Test() {
     
     const API_BASE = "https://sptech-urqr-api.herokuapp.com";
-    const URL_BASE = "https://sptech-urqr.herokuapp.com";
+    // const API_BASE = "http://localhost:3001";
+
+    const URL_BASE = "http://localhost:3000";
+    // const URL_BASE = "https://sptech-urqr.herokuapp.com";
 
     const [cardInfo, setCardInfo] = useState([])
     const [qrCode, setQrCode] = useState("")
@@ -52,7 +55,7 @@ function Test() {
                     <div key={card._id}>
                     <div className="card-item__title">
                         <div className="card-item__NameTitle">First Name</div>
-                        <div className="card-item__NameTitle">Last Name</div>
+                        <div className="card-item__col2_NameTitle">Last Name</div>
                     </div>
                         <input value={card.firstName} disabled/>
                         <input value={card.lastName} disabled/>
@@ -62,7 +65,7 @@ function Test() {
                     </div>
                     <div className="card-item__title">
                         <div className="card-item__NameTitle">Cell Phone</div>
-                        <div className="card-item__NameTitle">Home Phone</div>
+                        <div className="card-item__col2_NameTitle">Home Phone</div>
                     </div>
                     <div>
                         <input value={card.cellPhone} disabled/>
@@ -71,7 +74,7 @@ function Test() {
                     <div>
                     <div className="card-item__title">
                         <div className="card-item__NameTitle">School Name</div>
-                        <div className="card-item__NameTitle">School Phone</div>
+                        <div className="card-item__col2_NameTitle">School Phone</div>
                     </div>
                         <input value={card.schoolName} disabled/>
                         <input value={card.schoolPhone} disabled/>

@@ -1,7 +1,13 @@
+// import { response } from 'express';
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const InputData = (props) => {
+    let now = new Date();
+    now = + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+
+    // const API_BASE = "http://localhost:3001";
     const API_BASE = "https://sptech-urqr-api.herokuapp.com";
     
     const [card, setCard] = useState([]);
@@ -9,6 +15,7 @@ const InputData = (props) => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [birth, setBirth] = useState('');
+    const [imageInput, setImageInput]= useState(null);
     const [homePhone, setHomePhone] = useState('');
     const [cellPhone, setCellPhone] = useState('');
     const [schoolName, setSchoolName] = useState('');
@@ -22,32 +29,47 @@ const InputData = (props) => {
     const GenerateCode = () => {
         return new Array(5).join().replace(/(.|$)/g, function(){return ((Math.random()*36)|0).toString(36);}).toUpperCase();
     }
-
-    const submitForm = async () => {    
-        let code =  GenerateCode();
-        const data = await fetch(API_BASE + "/card/new", {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                cardCode: code,
-                firstName: firstName,
-                lastName: lastName,
-                birth: birth,
-                homePhone: homePhone,
-                cellPhone: cellPhone,
-                schoolName: schoolName,
-                schoolPhone: schoolPhone,
-                addInfo: addInfo,
-                password: password
-            })
-        }).then(res => res.json())
-        .finally(navigate(`/result`, { state: { qrText: code }}))
-        .catch(err => console.error(err));
-
-        setCard([...card, data]);
     
+    const [resultImageURL, setResultImageURL] = useState('default - useState')
+    
+    
+    const submitImage = async () => {
+        console.log('SI 1 | start submitImage ', now );
+        
+        // try {
+        const { url } = await fetch( API_BASE + "/s3Url")
+        .then(res => res.json())
+        .finally(res => {console.log('fff')})
+        // get secure url from our server
+        
+        // const splitUrl = url.split('?')[0]
+        
+        await fetch(url, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "multipart/form-data",
+            },
+            body: imageInput
+        })
+        // } catch (e) { console.log('e: ',e)
+        // post the image directly to the s3 bucket
+        //    .then(res => {console.log('hello ==> ', res.json())})
+        //    .catch(error => console.error('This is Error message -', error))
+        // .then(res => { return res.split('?')[0]})
+        
+        // .then(console.log('SI 3 | PUT IMAGE TO S3 at', now))
+        // .catch(err => {console.error('getting error while uploading image to S3 \n', err, now)})
+        
+        console.log('SI 2 | url: ', url , ' ', now);
+        // return url.split('?')[0];
+    }
+    
+    const submitInfo = async () => {
+        console.log('start :', now)
+        // submitImage();
+        // console.log('sdfdfskdsfkdsfk=? ', url);
+        // submitForm();
+        
         setCodeText('');
         setFirstName('');
         setLastName('');
@@ -61,7 +83,77 @@ const InputData = (props) => {
         setIsSamePassword('false');
         setTextIsSamePassword('');
         setDisableForm(false);
-        code = ''
+        setImageInput(null);
+        // resultImageURL = ''
+        // code = ''
+
+        console.log('SF 5 | ', now , ' _ finished submitForm()');
+    }
+    
+    const submitForm = async () => {    
+        console.log('--------------- submitForm---------------: ', now);
+        let code =  GenerateCode();
+        
+        console.log('SF 1 | start submitForm')
+        
+        
+        // submitImage(url)
+        // const submitImagePromise = await submitImage(url);
+        // const submitImgResult = submitImagePromise;
+        
+        // console.log('ffff => ', url.split('?')[0]);
+        // const urlShape = url.split('?')[0]
+        const data = await fetch(API_BASE + "/card/new", {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                cardCode: code, 
+                firstName: firstName,
+                lastName: lastName,
+                // imageUrl : urlShape,
+                birth: birth,
+                homePhone: homePhone,
+                cellPhone: cellPhone,
+                schoolName: schoolName,
+                schoolPhone: schoolPhone,
+                addInfo: addInfo,
+                password : password,
+                issueDate: now
+            })
+        })
+        // .catch(err => console.error(err))
+        // .then(console.log('SF 3 | ', now , '__ POST DATA'))
+        // .then(res => console.log(res.json()))
+        .then(navigate(`/result`, { state: { qrText: code }}))
+        // .catch(navigate(`/error`))
+        // .catch(err => console.error('getting error while posting data, ' , err))
+
+        console.log('SF 4 | ', now);
+        
+        setCard([...card, data]);
+        
+        setCodeText('');
+        setFirstName('');
+        setLastName('');
+        setBirth('');
+        setHomePhone('');
+        setCellPhone('');
+        setSchoolName('');
+        setSchoolPhone('');
+        setAddInfo('');
+        setPassword('');
+        setIsSamePassword('false');
+        setTextIsSamePassword('');
+        setDisableForm(false);
+        setImageInput(null);
+        // resultImageURL = ''
+        // code = ''
+
+        console.log('SF 5 | ', now , ' _ finished submitForm()');
+
+        // console.log('SF 5 | ', now , ' _ finished submitForm()');
     }
 
     const [isToggleOn, setIsToggleOn] = useState(false);
@@ -92,6 +184,7 @@ const InputData = (props) => {
             setIsSamePassword('false')
         }
     }
+    
 
     return (
         <>
@@ -105,7 +198,7 @@ const InputData = (props) => {
                     <form className="input-form" onSubmit={submitForm}>
                     <div className="card-item__title">
                         <div className="input_card-item__NameTitle">First Name <em>*</em></div>
-                        <div className="input_card-item__NameTitle">Last Name <em>*</em></div>
+                        <div className="input_card_item_col2_NameTitle">Last Name <em>*</em></div>
                     </div>
                     <div>
                         <input id="firstName" type="text" placeholder="First Name" 
@@ -117,10 +210,15 @@ const InputData = (props) => {
                     <div>
                         <input id="birth" type="date" placeholder="Date of Birth"
                          max={today} onChange={e => setBirth(e.target.value)} />
+                        {/* <input
+                            type="file"
+
+                            onChange={(e) => setImageInput(e.target.files[0])}
+                        /> */}
                     </div>
                     <div className="card-item__title">
                         <div className="input_card-item__NameTitle">Cell Phone <em>*</em></div>
-                        <div className="input_card-item__NameTitle">Home Phone</div>
+                        <div className="input_card_item_col2_NameTitle">Home Phone</div>
                     </div>
                     <div>
                         <input id="cellPhone" type="text" placeholder="Cell Phone"
@@ -130,7 +228,7 @@ const InputData = (props) => {
                     </div>
                     <div className="card-item__title">
                         <div className="input_card-item__NameTitle">School Name</div>
-                        <div className="input_card-item__NameTitle">School Phone</div>
+                        <div className="input_card_item_col2_NameTitle">School Phone</div>
                     </div>
                     <div>
                         <input id="schoolName" type="text" placeholder="School Name"
@@ -145,7 +243,7 @@ const InputData = (props) => {
                     </div>
                     <div className="card-item__title">
                         <div className="input_card-item__NameTitle">Password <em>*</em></div>
-                        <div className="input_card-item__NameTitle">Confirm Password <em>*</em></div>
+                        <div className="input_card_item_col2_NameTitle">Confirm Password <em>*</em></div>
                     </div>
                     <div>
                         <input type={isHiden ? "password" : "text" }  name="password" placeholder="Password"

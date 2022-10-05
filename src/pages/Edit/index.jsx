@@ -3,8 +3,11 @@ import { useNavigate, useParams } from 'react-router-dom';
 import 'animate.css';
 
 const EditCard  = (props) => {
-    const URL_BASE = "https://sptech-urqr.herokuapp.com";
+    // const URL_BASE = "https://sptech-urqr.herokuapp.com";
+    const URL_BASE = "http://localhost:3000";
+
     const API_BASE = "https://sptech-urqr-api.herokuapp.com";
+    // const API_BASE = "http://localhost:3001";
     
     let [cardInfo, setCardInfo] = useState([]);
     let submitCard = {};
@@ -12,6 +15,7 @@ const EditCard  = (props) => {
     let [firstName, setFirstName] = useState('');
     let [lastName, setLastName] = useState('');
     let [birth, setBirth] = useState('');
+    let [imageUrl, setImageUrl] = useState('');
     let [homePhone, setHomePhone] = useState('');
     let [cellPhone, setCellPhone] = useState('');
     let [schoolName, setSchoolName] = useState('');
@@ -74,6 +78,7 @@ const EditCard  = (props) => {
                 cardCode: qrText,
                 firstName: firstName === '' ? submitCard.firstName : firstName,
                 lastName: lastName === '' ? submitCard.lastName : lastName,
+                imageUrl: imageUrl === '' ? submitCard.imageUrl : imageUrl,
                 birth: birth === '' ? submitCard.birth : birth,
                 homePhone: homePhone === '' ? submitCard.homePhone : homePhone,
                 cellPhone: cellPhone === '' ? submitCard.cellPhone : cellPhone,
@@ -147,7 +152,7 @@ const EditCard  = (props) => {
                     <div key={card._id}>
                     <div className="card-item__title">
                         <div className="input_card-item__NameTitle">First Name <em>*</em></div>
-                        <div className="input_card-item__NameTitle">Last Name <em>*</em></div>
+                        <div className="input_card_item_col2_NameTitle">Last Name <em>*</em></div>
                     </div>
                     <div>
                         <input id="firstName" type="text" defaultValue={card.firstName} placeholder='First Name'
@@ -162,7 +167,7 @@ const EditCard  = (props) => {
                     </div>
                     <div className="card-item__title">
                         <div className="input_card-item__NameTitle">Cell Phone <em>*</em></div>
-                        <div className="input_card-item__NameTitle">Home Phone</div>
+                        <div className="input_card_item_col2_NameTitle">Home Phone</div>
                     </div>
                     <div>
                         <input id="cellPhone" type="text" placeholder="Cell Phone"
@@ -172,7 +177,7 @@ const EditCard  = (props) => {
                     </div>
                     <div className="card-item__title">
                         <div className="input_card-item__NameTitle">School Name</div>
-                        <div className="input_card-item__NameTitle">School Phone</div>
+                        <div className="input_card_item_col2_NameTitle">School Phone</div>
                     </div>
                     <div>
                         <input id="schoolName" type="text" placeholder="School Name"
@@ -187,7 +192,7 @@ const EditCard  = (props) => {
                     </div>
                     <div className="card-item__title">
                         <div className="input_card-item__NameTitle">Password <em>*</em></div>
-                        <div className="input_card-item__NameTitle">Confirm Password <em>*</em></div>
+                        <div className="input_card_item_col2_NameTitle">Confirm Password <em>*</em></div>
                     </div>
                     <div>
                         <input type={isHiden ? "password" : "text" }  name="password" placeholder="Password"
