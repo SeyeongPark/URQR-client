@@ -3,6 +3,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 import 'animate.css';
 
 const EditCard  = (props) => {
+    let now = new Date();
+    now = + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+
     // const URL_BASE = "https://sptech-urqr.herokuapp.com";
     const URL_BASE = "http://localhost:3000";
 
@@ -85,7 +88,8 @@ const EditCard  = (props) => {
                 schoolName: schoolName === '' ? submitCard.schoolName : schoolName,
                 schoolPhone: schoolPhone === '' ? submitCard.schoolPhone : schoolPhone,
                 addInfo: addInfo === '' ? submitCard.addInfo : addInfo,
-                password: password === '' ? submitCard.password : password
+                password: password === '' ? submitCard.password : password,
+                issueDate: now
             })
         }).then(res => res.json())
         .finally(navigate(`/result`, { state: { qrText: qrText }}))
