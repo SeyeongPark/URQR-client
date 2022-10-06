@@ -34,15 +34,10 @@ const InputData = (props) => {
     
     
     const submitImage = async () => {
-        console.log('SI 1 | start submitImage ', now );
         
-        // try {
         const { url } = await fetch( API_BASE + "/s3Url")
         .then(res => res.json())
-        .finally(res => {console.log('fff')})
         // get secure url from our server
-        
-        // const splitUrl = url.split('?')[0]
         
         await fetch(url, {
             method: "PUT",
@@ -60,12 +55,10 @@ const InputData = (props) => {
         // .then(console.log('SI 3 | PUT IMAGE TO S3 at', now))
         // .catch(err => {console.error('getting error while uploading image to S3 \n', err, now)})
         
-        console.log('SI 2 | url: ', url , ' ', now);
         // return url.split('?')[0];
     }
     
     const submitInfo = async () => {
-        console.log('start :', now)
         // submitImage();
         // console.log('sdfdfskdsfkdsfk=? ', url);
         // submitForm();
@@ -86,17 +79,11 @@ const InputData = (props) => {
         setImageInput(null);
         // resultImageURL = ''
         // code = ''
-
-        console.log('SF 5 | ', now , ' _ finished submitForm()');
     }
     
     const submitForm = async () => {    
-        console.log('--------------- submitForm---------------: ', now);
         let code =  GenerateCode();
-        
-        console.log('SF 1 | start submitForm')
-        
-        
+    
         // submitImage(url)
         // const submitImagePromise = await submitImage(url);
         // const submitImgResult = submitImagePromise;
@@ -130,7 +117,6 @@ const InputData = (props) => {
         // .catch(navigate(`/error`))
         // .catch(err => console.error('getting error while posting data, ' , err))
 
-        console.log('SF 4 | ', now);
         
         setCard([...card, data]);
         
@@ -150,8 +136,6 @@ const InputData = (props) => {
         setImageInput(null);
         // resultImageURL = ''
         // code = ''
-
-        console.log('SF 5 | ', now , ' _ finished submitForm()');
 
         // console.log('SF 5 | ', now , ' _ finished submitForm()');
     }
