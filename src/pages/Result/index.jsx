@@ -6,11 +6,11 @@ import { useEffect } from 'react';
 
 function Test() {
     
-    // const API_BASE = "https://sptech-urqr-api.herokuapp.com";
-    const API_BASE = "http://localhost:3001";
+    const API_BASE = "https://sptech-urqr-api.herokuapp.com";
+    // const API_BASE = "http://localhost:3001";
 
-    const URL_BASE = "http://localhost:3000";
-    // const URL_BASE = "https://sptech-urqr.herokuapp.com";
+    // const URL_BASE = "http://localhost:3000";
+    const URL_BASE = "https://sptech-urqr.herokuapp.com";
 
     const [cardInfo, setCardInfo] = useState([])
     const [qrCode, setQrCode] = useState("")
