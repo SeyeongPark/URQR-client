@@ -1,5 +1,3 @@
-// import { response } from 'express';
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -15,7 +13,6 @@ const InputData = (props) => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [birth, setBirth] = useState('');
-    const [imageInput, setImageInput]= useState(null);
     const [homePhone, setHomePhone] = useState('');
     const [cellPhone, setCellPhone] = useState('');
     const [schoolName, setSchoolName] = useState('');
@@ -29,67 +26,9 @@ const InputData = (props) => {
     const GenerateCode = () => {
         return new Array(5).join().replace(/(.|$)/g, function(){return ((Math.random()*36)|0).toString(36);}).toUpperCase();
     }
-    
-    const [resultImageURL, setResultImageURL] = useState('default - useState')
-    
-    
-    const submitImage = async () => {
-        
-        const { url } = await fetch( API_BASE + "/s3Url")
-        .then(res => res.json())
-        // get secure url from our server
-        
-        await fetch(url, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "multipart/form-data",
-            },
-            body: imageInput
-        })
-        // } catch (e) { console.log('e: ',e)
-        // post the image directly to the s3 bucket
-        //    .then(res => {console.log('hello ==> ', res.json())})
-        //    .catch(error => console.error('This is Error message -', error))
-        // .then(res => { return res.split('?')[0]})
-        
-        // .then(console.log('SI 3 | PUT IMAGE TO S3 at', now))
-        // .catch(err => {console.error('getting error while uploading image to S3 \n', err, now)})
-        
-        // return url.split('?')[0];
-    }
-    
-    const submitInfo = async () => {
-        // submitImage();
-        // console.log('sdfdfskdsfkdsfk=? ', url);
-        // submitForm();
-        
-        setCodeText('');
-        setFirstName('');
-        setLastName('');
-        setBirth('');
-        setHomePhone('');
-        setCellPhone('');
-        setSchoolName('');
-        setSchoolPhone('');
-        setAddInfo('');
-        setPassword('');
-        setIsSamePassword('false');
-        setTextIsSamePassword('');
-        setDisableForm(false);
-        setImageInput(null);
-        // resultImageURL = ''
-        // code = ''
-    }
-    
+
     const submitForm = async () => {    
         let code =  GenerateCode();
-    
-        // submitImage(url)
-        // const submitImagePromise = await submitImage(url);
-        // const submitImgResult = submitImagePromise;
-        
-        // console.log('ffff => ', url.split('?')[0]);
-        // const urlShape = url.split('?')[0]
         const data = await fetch(API_BASE + "/card/new", {
             method: 'POST',
             headers: {
@@ -99,7 +38,6 @@ const InputData = (props) => {
                 cardCode: code, 
                 firstName: firstName,
                 lastName: lastName,
-                // imageUrl : urlShape,
                 birth: birth,
                 homePhone: homePhone,
                 cellPhone: cellPhone,
@@ -110,16 +48,9 @@ const InputData = (props) => {
                 issueDate: now
             })
         })
-        // .catch(err => console.error(err))
-        // .then(console.log('SF 3 | ', now , '__ POST DATA'))
-        // .then(res => console.log(res.json()))
         .then(navigate(`/result`, { state: { qrText: code }}))
-        // .catch(navigate(`/error`))
-        // .catch(err => console.error('getting error while posting data, ' , err))
 
-        
-        setCard([...card, data]);
-        
+        setCard([...card, data]);   
         setCodeText('');
         setFirstName('');
         setLastName('');
@@ -134,10 +65,6 @@ const InputData = (props) => {
         setTextIsSamePassword('');
         setDisableForm(false);
         setImageInput(null);
-        // resultImageURL = ''
-        // code = ''
-
-        // console.log('SF 5 | ', now , ' _ finished submitForm()');
     }
 
     const [isToggleOn, setIsToggleOn] = useState(false);
@@ -168,7 +95,6 @@ const InputData = (props) => {
             setIsSamePassword('false')
         }
     }
-    
 
     return (
         <>
