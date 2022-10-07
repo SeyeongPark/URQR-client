@@ -89,7 +89,7 @@ function Test() {
                     <div className="qr-code-container">
                             <img src={qrCode}/>
                             <h5>{qrText}</h5>
-                            <a className="btn-download" href={qrCode} download={`${qrText}.png`}>download</a>
+                            <a className="btn-download" href={qrCode} download={`URQR-${qrText}.png`}>download</a>
                     </div>
                 </div>
                 <div className="form-bottom">
