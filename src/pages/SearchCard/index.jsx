@@ -79,10 +79,6 @@ function SearchCard() {
                         <div className="input_card-item__NameTitle">Special Information</div>
                         <textarea value={card.addInfo} disabled/>
                     </div>
-
-                    <div className="qr-code-container">
-                            <img src={card.imageUrl}/>
-                    </div>
                 </div>    
                 ))}
                     </div>

@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
+import './App-mobile.css'
 import ErrorPage from './pages/Error';
 
 import EditCard from './pages/Edit';
