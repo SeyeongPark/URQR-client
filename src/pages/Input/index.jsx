@@ -64,7 +64,6 @@ const InputData = (props) => {
         setIsSamePassword('false');
         setTextIsSamePassword('');
         setDisableForm(false);
-        setImageInput(null);
     }
 
     const [isToggleOn, setIsToggleOn] = useState(false);
