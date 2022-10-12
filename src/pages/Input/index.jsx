@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ImageUploadWidget from '../../app/common/ImageUploadWidget';
 
 const InputData = (props) => {
     let now = new Date();
     now = + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
 
-    // const API_BASE = "http://localhost:3001";
-    const API_BASE = "https://sptech-urqr-api.herokuapp.com";
+    const API_BASE = "http://localhost:3001";
+    // const API_BASE = "https://sptech-urqr-api.herokuapp.com";
     
     const [card, setCard] = useState([]);
     const [codeText, setCodeText] = useState('');
@@ -19,6 +20,7 @@ const InputData = (props) => {
     const [schoolPhone, setSchoolPhone] = useState('');
     const [addInfo, setAddInfo] = useState('');
     const [password, setPassword] = useState('');
+    const [image, setImage] = useState();
     const navigate = useNavigate();
 
     const today = new Date().toISOString().substring(0,10);
@@ -29,24 +31,27 @@ const InputData = (props) => {
 
     const submitForm = async () => {    
         let code =  GenerateCode();
+        const object = {
+            cardCode: code, 
+            firstName: firstName,
+            lastName: lastName,
+            birth: birth,
+            homePhone: homePhone,
+            cellPhone: cellPhone,
+            schoolName: schoolName,
+            schoolPhone: schoolPhone,
+            addInfo: addInfo,
+            password : password,
+            issueDate: now
+        }
+        let formData = new FormData();
+        for (const key in object){
+            formData.append(key, object[key])
+        }
+        formData.append('Image', image);
         const data = await fetch(API_BASE + "/card/new", {
             method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                cardCode: code, 
-                firstName: firstName,
-                lastName: lastName,
-                birth: birth,
-                homePhone: homePhone,
-                cellPhone: cellPhone,
-                schoolName: schoolName,
-                schoolPhone: schoolPhone,
-                addInfo: addInfo,
-                password : password,
-                issueDate: now
-            })
+            body: formData
         })
         .then(navigate(`/result`, { state: { qrText: code }}))
 
@@ -97,7 +102,6 @@ const InputData = (props) => {
 
     return (
         <>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
         <div className="input-container">
             <div className="input-form-container">
                 <div className="input-form-title">
@@ -169,6 +173,7 @@ const InputData = (props) => {
                         <button type="submit" className="submit-btn" disabled={disableForm}>Submit</button>
                     </div>
                     </form>
+                    <ImageUploadWidget setFile={setImage}/>
                     <div>
                         <img src={require('../../assets/images/account.svg').default}/>
                     </div>

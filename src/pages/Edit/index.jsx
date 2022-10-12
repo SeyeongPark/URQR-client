@@ -9,8 +9,8 @@ const EditCard  = (props) => {
     const URL_BASE = "https://sptech-urqr.herokuapp.com";
     // const URL_BASE = "http://localhost:3000";
 
-    const API_BASE = "https://sptech-urqr-api.herokuapp.com";
-    // const API_BASE = "http://localhost:3001";
+    // const API_BASE = "https://sptech-urqr-api.herokuapp.com";
+    const API_BASE = "http://localhost:3001";
     
     let [cardInfo, setCardInfo] = useState([]);
     let submitCard = {};
@@ -143,7 +143,6 @@ const EditCard  = (props) => {
     
     return (
         <>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
         <div className="input-container">
             { isAuth ? (
             <div className="input-form-container">
