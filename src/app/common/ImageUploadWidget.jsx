@@ -4,15 +4,14 @@ import {useDropzone} from 'react-dropzone'
 import {AiOutlineUpload} from 'react-icons/ai';
 
 
-function ImageUploadWidget({setFile}) {
-    const [src, setSrc] = useState('')
+function ImageUploadWidget({setFile, srcInit = ''}) {
+    const [src, setSrc] = useState(srcInit)
 
     const dzStyles = {
         border: 'dashed 3px #eee',
         borderColor: '#eee',
         borderRadius: '5px',
-        height: 300,
-        width: 300
+        height: 150,
     }
 
     const dzActive = {
@@ -38,7 +37,7 @@ function ImageUploadWidget({setFile}) {
                 <input {...getInputProps()} />
                 {
                     src ?
-                    <img style={{height:'300px'}} src={src} alt='Uploaded image'/>
+                    <img style={{height:'150px'}} src={src} alt='Image'/>
                     :
                     <AiOutlineUpload size='huge'/>
                 }
