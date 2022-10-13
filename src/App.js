@@ -7,6 +7,7 @@ import EditCard from './pages/Edit';
 import InputData from './pages/Input';
 import Result from './pages/Result';
 import SearchCard from './pages/SearchCard';
+import SampleFormImageUpload from './app/Sample/SampleFormImageUpload';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path='/result' element={<Result/>} />
           <Route path='/edit/:qrText' element={<EditCard/>} />
           <Route path='/search/:qrText' element={<SearchCard/>} />
+          <Route path='sample' element={<SampleFormImageUpload/>}/>
         </Routes>
       </Router>
     </div>
