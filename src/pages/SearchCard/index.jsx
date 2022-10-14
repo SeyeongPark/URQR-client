@@ -15,11 +15,15 @@ function SearchCard() {
     const [cardInfo, setCardInfo] = useState([])
     const [qrCode, setQrCode] = useState("")
     const { qrText } = useParams();
+    const [isMobile, setIsMobile] = useState(false);
+
     const URL_EDIT = URL_BASE + '/edit/' + qrText;
 
     useEffect(() => {
         GetCardInfo(qrText)
         generateQrCode()
+
+        window.innerWidth <= 1024 ? setIsMobile(true) : setIsMobile(false);
     }, [qrText])
 
     const GetCardInfo = async qrText => {
@@ -43,61 +47,92 @@ function SearchCard() {
     }
 
     return (
+        <>
         <div className="input-container">
             <div className="input-form-container">
                 <div className="input-form-title">
                     <h2>Card Information</h2>
                 </div>
                 <div className="container">
-                    <div className="input-form">
-                        {cardInfo.map(card => (
-                            <div style={{display:'flex'}} key={card._id}>
-                                <div>
-                                    <div className="card-item__title">
-                                        <div className="input_card-item__NameTitle">First Name</div>
-                                        <div className="input_card_item_col2_NameTitle">Last Name</div>
-                                    </div>
-                                    <input value={card.firstName} disabled />
-                                    <input value={card.lastName} disabled />
-                                    <div>
-                                        <div className="input_card-item__NameTitle">Birth Date</div>
-                                        <input value={card.birth} disabled />
-                                    </div>
-                                    <div className="card-item__title">
-                                        <div className="input_card-item__NameTitle">Home Phone</div>
-                                        <div className="input_card_item_col2_NameTitle">Cell Phone</div>
-                                    </div>
-                                    <div>
-                                        <input value={card.homePhone} disabled />
-                                        <input value={card.cellPhone} disabled />
-                                    </div>
-                                    <div>
-                                        <div className="card-item__title">
-                                            <div className="input_card-item__NameTitle">School Name</div>
-                                            <div className="input_card_item_col2_NameTitle">School Phone</div>
-                                        </div>
-                                        <input value={card.schoolName} disabled />
-                                        <input value={card.schoolPhone} disabled />
-                                    </div>
-                                    <div>
-                                        <div className="input_card-item__NameTitle">Special Information</div>
-                                        <textarea value={card.addInfo} disabled />
-                                    </div>
-                                </div>
-                                <div>
-                                    <div>Image</div>
-                                    <img src={card.imageUrl} style={{height:'150px',border:"1px solid black"}} alt="Image"/>
-                                </div>
-                            </div>
-                        ))}
+                    {cardInfo.map(card => (
+                    <>
+                    <form className="input-form">
+                    <div className="two-column-form" key={card._id}>
+
+                    <div className="form-group">
+                    { isMobile ?
+                    <div className='upload-img'>
+                        <img src={card.imageUrl} style={{objectFit: 'contain', width: '100%', height: '300px', marginBottom: '20px'}} alt="Image"/>
+                    </div> : ''} 
                     </div>
+
+                    <div className="form-group">
+                        <label>First Name</label>
+                        <input value={card.firstName} disabled />
+                    </div>
+
+                    <div className="form-group">
+                        <label>Last Name</label>
+                        <input value={card.lastName} disabled />
+                    </div>
+
+                    <div className="form-group">
+                        <label>Birth Date</label>
+                        <input value={card.birth} disabled />
+                    </div>
+
+                    <div className="form-group">
+                        <label>Cell Phone</label>
+                        <input value={card.cellPhone} disabled />
+                    </div>
+
+                    <div className="form-group">
+                        <label>Home Phone</label>
+                        <input value={card.homePhone} disabled />
+                    </div>
+
+                    <div className="form-group">
+                        <label>School Name</label>
+                        <input value={card.schoolName} disabled />
+                    </div>
+
+                    <div className="form-group">
+                        <label>School Phone</label>
+                        <input value={card.schoolPhone} disabled />
+                    </div>
+
+                    <div className="form-group">
+                        <label>Special Information</label>
+                        <textarea value={card.addInfo} disabled />
+                    </div>
+
+                    <div className="form-group"/>
+
+                    <div className="form-group">
+                        <a id="create-a" href={URL_BASE}> Create new code</a>
+                    </div>
+
+                    <div className="form-group">
+                        <a id="edit-a" href={URL_EDIT}> Edit Card</a>
+                    </div>
+
+                    <div className="form-group"/>
+                    
+                    </div>
+                    </form>
+                    
+                    { isMobile ? '' : <>
+                    <div className='upload-img'>
+                        <img src={card.imageUrl} style={{objectFit: 'contain', width: '380px', height: '470px'}} alt="Image"/>
+                    </div> 
+                    </>}
+
+                    </>))}
                 </div>
-                <div className="form-bottom">
-                    <a className="link-new-code" href={URL_BASE}> Create new code</a>
-                    <a className="link-edit-code" href={URL_EDIT}> Edit Card</a>
                 </div>
+                
             </div>
-        </div>
+            </>
     )
 }
 

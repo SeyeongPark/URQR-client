@@ -12,7 +12,7 @@ function ImageUploadWidget({setFile, srcInit = '', isMobile}) {
         width = '100%';
     } else {
         height = 455;
-         width = '370px';
+        width = '370px';
     }
 
 
@@ -70,7 +70,6 @@ const UploadMobile = ({src}) => {
 }
 
 const UploadWeb = ({src}) => { 
-    console.log('mobile, web : ', src)
     return (
         <>
         {

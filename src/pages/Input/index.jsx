@@ -28,8 +28,6 @@ const InputData = (props) => {
 
     useEffect(()=>{
         window.innerWidth <= 1024 ? setIsMobile(true) : setIsMobile(false);
-
-        console.log('setIsMobile: ', isMobile )
     })
 
     const GenerateCode = () => {
@@ -109,7 +107,7 @@ const InputData = (props) => {
 
     return (
         <>
- <div className="input-container">
+        <div className="input-container">
             <div className="input-form-container">
                 <div className="input-form-title">
                     <h2>Create new information card</h2>
@@ -117,7 +115,8 @@ const InputData = (props) => {
                 <div className="container">
                     <form className="input-form" onSubmit={submitForm}>
                     <div className="two-column-form">
-                    
+                    <div className="form-group"/>
+
                     <div className="form-group">
                         <label>First Name<em> *</em></label>
                         <input id="firstName" type="text" 

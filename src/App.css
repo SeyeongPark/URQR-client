@@ -82,13 +82,14 @@ em {
 	margin-bottom: 5px;
   }
   
-.form-group:nth-of-type(3) {
+.form-group:nth-of-type(4) {
 	width: 49%;
 	padding-right: 20px;
   }
-  
-.form-group:nth-of-type(8),
+
+.form-group:first-of-type,
 .form-group:nth-of-type(9),
+.form-group:nth-of-type(10),
 .form-group:last-of-type{
 	width: 100%;
   }
@@ -120,9 +121,13 @@ form i {
     cursor: pointer;
 }
 
-.edit-password-confirm {
-	display: flex;
+
+.input-form-password {
+	display: block;
+	align-items: center;
+	justify-content: center;
 }
+
 
 .password-confirm {
  	width: 350px;
@@ -204,14 +209,20 @@ form i {
 	color: var(--green);
 }
 
-.edit-form-bottom .link-back-to {
-	color: var(--dark-alt);
+.form-group #create-a,
+.form-group #edit-a
+{
 	text-decoration: none;
 }
 
-.input-edit-password{
-	height: 20px;
-	margin-top: 10px;
+.form-group #create-a
+{
+	color: var(--green);
+}
+
+.form-group #edit-a
+{
+	color: var(--blue);
 }
 
 .btn-edit-password {

@@ -230,7 +230,7 @@ const EditCard = (props) => {
                     <div className="container">
                         <form className="input-form-password" onSubmit={checkPassword}>
                             <h2>Password for editing <b>{qrText}</b></h2>
-                            <input type="password" id='input-edit-password' className='input-edit-password'
+                            <input type="password" id='input-edit-password'
                                 onChange={e => setInputPassword(e.target.value)}></input>
                             <button className='btn-edit-password' type="submit">Enter</button>
                             <div className='edit-password-confirm' id="edit-password">
