@@ -21,11 +21,11 @@ const InputData = (props) => {
     const [addInfo, setAddInfo] = useState('');
     const [password, setPassword] = useState('');
     const [image, setImage] = useState();
-    const [isMobile, setIsMobile] = useState(false);
     const navigate = useNavigate();
-
+    
     const today = new Date().toISOString().substring(0, 10);
-
+    
+    const [isMobile, setIsMobile] = useState(false);
     useEffect(()=>{
         window.innerWidth <= 1024 ? setIsMobile(true) : setIsMobile(false);
     })
@@ -175,21 +175,20 @@ const InputData = (props) => {
                         </div>
                     
                     <div className="form-group">
-                        <label>Password  <em>*</em></label>
-                        <input type={isHiden ? "password" : "text" }  name="password" placeholder="Password"
-                         onChange={e => setPassword(e.target.value)}/>
+                        <label>Password<em> *</em></label>
+                        <input id="password-input" type={isHiden ? "password" : "text"} name="password" placeholder="Password" onChange={e => setPassword(e.target.value)} />
+                        <i className={isToggleOn ? "bi-eye" : "bi bi-eye-slash"} id="togglePassword" defaultValue={card.password} onClick={handlePasswordClick}></i>
                     </div>
-                    
 
                     <div className="form-group">
                         <label>Confirm Password  <em>*</em></label>
                         <input type="password" name="confirmPassword" 
                          onChange={e => checkPasswordIsSame(e)} required/>
+                         <div className='password-confirm' id="password">
+                            <span className="confirmSamePassword" id={isSamePassword}>{textIsSamePassword}</span>
+                         </div>
                     </div>
 
-                    <div className="form-group" id="password">
-                         <span className="confirmSamePassword" id={isSamePassword}>{textIsSamePassword}</span>
-                    </div>
 
                     <div className="form-group">
                         <button type="submit" className="submit-btn" disabled={disableForm}>Make My QR</button>
@@ -200,11 +199,11 @@ const InputData = (props) => {
 
                     { isMobile ? '' : <>
                     <div className='upload-img'>
-                    <h3>Upload Image</h3>
-                    <div>
-                        <ImageUploadWidget setFile={setImage} isMobile={isMobile} />
-                    </div>
-                    </div> 
+                        <h3>Upload Image</h3>
+                        <div>
+                            <ImageUploadWidget setFile={setImage} isMobile={isMobile} />
+                        </div>
+                        </div> 
                     </>
                     }
                 </div>
