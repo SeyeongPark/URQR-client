@@ -42,8 +42,6 @@
     }
     
     .container {
-        background-color: red;
-
         display:flex;
         margin-bottom: 1rem;
         height: 0;
@@ -81,7 +79,7 @@
     }
     
     .password-confirm {
-         width: 350px;
+        width: 350px;
         display: flex;
         justify-content: right;
         margin: -5px 0 0 0;
@@ -113,7 +111,7 @@
     }
 
     .form-group {
-        padding-right: 3px;
+        padding-right: 0px;
     }
 
     .form-group #qrcode {

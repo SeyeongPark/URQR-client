@@ -101,7 +101,7 @@ const Edit = ({cardInfo, qrText}) => {
     
     useEffect(() => {
         window.innerWidth <= 1024 ? setIsMobile(true) : setIsMobile(false);
-    }, [qrText])
+    }, [qrText, window.innerWidth])
 
     const handlePasswordClick = () => {
         if (isToggleOn === false) {

@@ -28,7 +28,7 @@ const InputData = (props) => {
     const [isMobile, setIsMobile] = useState(false);
     useEffect(()=>{
         window.innerWidth <= 1024 ? setIsMobile(true) : setIsMobile(false);
-    })
+    },[window.innerWidth])
 
     const GenerateCode = () => {
         return new Array(5).join().replace(/(.|$)/g, function () { return ((Math.random() * 36) | 0).toString(36); }).toUpperCase();
