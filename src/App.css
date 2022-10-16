@@ -3,7 +3,7 @@
 	--dark-alt: #202B3E;
 	--ivory: #EBEBEB;
 	--yellow: #F6C848 ;
-	--yellow-dark: #f3c64b ;
+	--yellow-dark: #d7ab32 ;
 	--green: #326E39;
 	--blue: #255699;
 }
@@ -105,7 +105,7 @@ label {
 input, textarea {
 	padding: 10px;
 	margin: 10px 0;
-	font-size: 14px;
+	font-size: 20px;
   	border: 1px solid rgb(201, 201, 201);
   	border-radius: 3px;
 }
@@ -161,11 +161,11 @@ form i {
 	color: red;
 }
 
-.upload-img {
+.right-form {
 	cursor: pointer;
 }
 
-.upload-img #upload-lb {
+.right-form #upload-lb {
 	color: #464646;
 	position: relative;
 	top: -5px;
@@ -201,8 +201,7 @@ form i {
 
 .qr-code-container {
 	text-align: center;
-	margin-top: -4rem;
-	width: 700px;
+	margin-top: -2rem;
 }
 
 .form-bottom {
@@ -232,6 +231,7 @@ form i {
 .form-group #edit-a
 {
 	text-decoration: none;
+	font-size: 25px;
 }
 
 .form-group #create-a
@@ -259,8 +259,8 @@ form i {
 }
 
 .btn-edit-password:hover {
-	background-color: var(--yellow-dark);
-	transition-duration: 0.4s;
+	background-color: var(--blue);
+	transition-duration: 0.8s;
 }
 
 .btn-download {

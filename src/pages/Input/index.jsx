@@ -167,7 +167,7 @@ const InputData = (props) => {
 
                     <div className="form-group">
                     { isMobile ? 
-                        <div className="upload-img">
+                        <div className="right-form">
                             <label id="upload-lb">Upload Image</label>
                             <ImageUploadWidget setFile={setImage} isMobile={isMobile} />
                         </div>
@@ -198,7 +198,7 @@ const InputData = (props) => {
                     </form>
 
                     { isMobile ? '' : <>
-                    <div className='upload-img'>
+                    <div className='right-form'>
                         <h3>Upload Image</h3>
                         <div>
                             <ImageUploadWidget setFile={setImage} isMobile={isMobile} />

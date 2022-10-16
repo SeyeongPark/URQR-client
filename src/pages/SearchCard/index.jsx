@@ -18,6 +18,7 @@ function SearchCard() {
     const [isMobile, setIsMobile] = useState(false);
 
     const URL_EDIT = URL_BASE + '/edit/' + qrText;
+    const defaultImgUrl = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
 
     useEffect(() => {
         GetCardInfo(qrText)
@@ -61,8 +62,8 @@ function SearchCard() {
 
                     <div className="form-group">
                     { isMobile ?
-                    <div className='upload-img'>
-                        <img src={card.imageUrl} style={{objectFit: 'contain', width: '100%', height: '300px', marginBottom: '20px'}} alt="Image"/>
+                    <div className='right-form'>
+                        <img src={card.imageUrl == '' ? defaultImgUrl : card.imageUrl} style={{objectFit: 'contain', width: '100%', height: '300px', marginBottom: '20px'}} alt="Image"/>
                     </div> : ''} 
                     </div>
 
@@ -122,8 +123,8 @@ function SearchCard() {
                     </form>
                     
                     { isMobile ? '' : <>
-                    <div className='upload-img'>
-                        <img src={card.imageUrl} style={{objectFit: 'contain', width: '380px', height: '470px'}} alt="Image"/>
+                    <div className='right-form'>
+                        <img src={card.imageUrl == '' ? defaultImgUrl : card.imageUrl} style={{objectFit: 'contain', width: '380px', height: '470px'}} alt="Image"/>
                     </div> 
                     </>}
 
