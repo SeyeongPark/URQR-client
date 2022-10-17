@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ImageUploadWidget from '../../app/common/ImageUploadWidget';
 
@@ -6,8 +6,8 @@ const InputData = (props) => {
     let now = new Date();
     now = + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
 
-    const API_BASE = "http://localhost:3001";
-    // const API_BASE = "https://sptech-urqr-api.herokuapp.com";
+    // const API_BASE = "http://localhost:3001";
+    const API_BASE = "https://sptech-urqr-api.herokuapp.com";
 
     const [card, setCard] = useState([]);
     const [codeText, setCodeText] = useState('');
@@ -22,8 +22,13 @@ const InputData = (props) => {
     const [password, setPassword] = useState('');
     const [image, setImage] = useState();
     const navigate = useNavigate();
-
+    
     const today = new Date().toISOString().substring(0, 10);
+    
+    const [isMobile, setIsMobile] = useState(false);
+    useEffect(()=>{
+        window.innerWidth <= 1024 ? setIsMobile(true) : setIsMobile(false);
+    },[window.innerWidth])
 
     const GenerateCode = () => {
         return new Array(5).join().replace(/(.|$)/g, function () { return ((Math.random() * 36) | 0).toString(36); }).toUpperCase();
@@ -102,88 +107,108 @@ const InputData = (props) => {
 
     return (
         <>
-            <div className="input-container">
-                <div className="input-form-container">
-                    <div className="input-form-title">
-                        <h2>Create new information card</h2>
+        <div className="input-container">
+            <div className="input-form-container">
+                <div className="input-form-title">
+                    <h2>Create new information card</h2>
+                </div>
+                <div className="container">
+                    <form className="input-form" onSubmit={submitForm}>
+                    <div className="two-column-form">
+                    <div className="form-group"/>
+
+                    <div className="form-group">
+                        <label>First Name<em> *</em></label>
+                        <input id="firstName" type="text" 
+                        onChange={e => setFirstName(e.target.value)} required/>
                     </div>
-                    <div className="container">
-                        <form className="input-form" onSubmit={submitForm}>
-                            <div style={{display:'flex'}}>
-                                <div>
-                                    <div className="card-item__title">
-                                        <div className="input_card-item__NameTitle">First Name <em>*</em></div>
-                                        <div className="input_card_item_col2_NameTitle">Last Name <em>*</em></div>
-                                    </div>
-                                    <div>
-                                        <input id="firstName" type="text" placeholder="First Name"
-                                            onChange={e => setFirstName(e.target.value)} required />
-                                        <input id="lastName" type="text" placeholder="Last Name"
-                                            onChange={e => setLastName(e.target.value)} required />
-                                    </div>
-                                    <div className="input_card-item__NameTitle">Birth Date</div>
-                                    <div>
-                                        <input id="birth" type="date" placeholder="Date of Birth"
-                                            max={today} onChange={e => setBirth(e.target.value)} />
-                                        {/* <input
-                                type="file"
 
-                                onChange={(e) => setImageInput(e.target.files[0])}
-                            /> */}
-                                    </div>
-                                    <div className="card-item__title">
-                                        <div className="input_card-item__NameTitle">Cell Phone <em>*</em></div>
-                                        <div className="input_card_item_col2_NameTitle">Home Phone</div>
-                                    </div>
-                                    <div>
-                                        <input id="cellPhone" type="text" placeholder="Cell Phone"
-                                            onChange={e => setCellPhone(e.target.value)} required />
-                                        <input id="homePhone" type="text" placeholder="Home Phone"
-                                            onChange={e => setHomePhone(e.target.value)} />
-                                    </div>
-                                    <div className="card-item__title">
-                                        <div className="input_card-item__NameTitle">School Name</div>
-                                        <div className="input_card_item_col2_NameTitle">School Phone</div>
-                                    </div>
-                                    <div>
-                                        <input id="schoolName" type="text" placeholder="School Name"
-                                            onChange={e => setSchoolName(e.target.value)} />
-                                        <input id="schoolPhone" type="text" placeholder="School Phone Number"
-                                            onChange={e => setSchoolPhone(e.target.value)} />
-                                    </div>
-                                    <div className="input_card-item__NameTitle">Special Information</div>
-                                    <div>
-                                        <textarea id="addInfo" type="text" placeholder="Special needs, medical conditions, allergies, Important information"
-                                            onChange={e => setAddInfo(e.target.value)} />
-                                    </div>
-                                    <div className="card-item__title">
-                                        <div className="input_card-item__NameTitle">Password <em>*</em></div>
-                                        <div className="input_card_item_col2_NameTitle">Confirm Password <em>*</em></div>
-                                    </div>
-                                    <div>
-                                        <input type={isHiden ? "password" : "text"} name="password" placeholder="Password"
-                                            onChange={e => setPassword(e.target.value)} />
-                                        <i className={isToggleOn ? "bi-eye" : "bi bi-eye-slash"} id="togglePassword" onClick={handlePasswordClick}></i>
+                    <div className="form-group">
+                        <label>Last Name<em> *</em></label>
+                        <input id="lastName" type="text" 
+                        onChange={e => setLastName(e.target.value)} required/>
+                    </div>
 
-                                        <input type="password" name="confirmPassword" placeholder="Confirm Password"
-                                            onChange={e => checkPasswordIsSame(e)} required />
-                                    </div>
-                                    <div className='password-confirm' id="password">
-                                        <span className="confirmSamePassword" id={isSamePassword}>{textIsSamePassword}</span>
-                                    </div>
-                                </div>
-                                <ImageUploadWidget setFile={setImage} />
-                            </div>
-                            <div style={{ marginLeft: '270px' }}>
-                                <button type="submit" className="submit-btn" disabled={disableForm}>Submit</button>
-                            </div>
-                        </form>
-                        <div>
-                            <img src={require('../../assets/images/account.svg').default} />
+                    <div className="form-group">
+                        <label>Birth Date</label>
+                        <input id="birth" type="date"
+                         max={today} onChange={e => setBirth(e.target.value)} />
+                    </div>
+
+                    <div className="form-group">
+                        <label>Cell Phone <em> *</em></label>
+                        <input id="cellPhone" type="tel" 
+                        onChange={e => setCellPhone(e.target.value)} required/>
+                    </div>
+
+                    <div className="form-group">
+                        <label>Home Phone</label>
+                        <input id="homePhone" type="tel" 
+                        onChange={e => setHomePhone(e.target.value)} />
+                    </div>
+
+                    <div className="form-group">
+                        <label>School Name</label>
+                        <input id="schoolName" type="text"
+                        onChange={e => setSchoolName(e.target.value)} />
+                    </div>
+
+                    <div className="form-group">
+                        <label>School Phone</label>
+                        <input id="schoolPhone" type="text" placeholder="School Phone Number"
+                        onChange={e => setSchoolPhone(e.target.value)} />
+                    </div>
+
+                    <div className="form-group">
+                        <label>Special Information</label>
+                        <textarea id="addInfo" type="text" placeholder="Special needs, medical conditions, allergies, Important information"
+                        onChange={e => setAddInfo(e.target.value)} />
+                    </div>
+
+                    <div className="form-group">
+                    { isMobile ? 
+                        <div className="right-form">
+                            <label id="upload-lb">Upload Image</label>
+                            <ImageUploadWidget setFile={setImage} isMobile={isMobile} />
                         </div>
+                        : '' }
+                        </div>
+                    
+                    <div className="form-group">
+                        <label>Password<em> *</em></label>
+                        <input id="password-input" type={isHiden ? "password" : "text"} name="password" placeholder="Password" onChange={e => setPassword(e.target.value)} />
+                        <i className={isToggleOn ? "bi-eye" : "bi bi-eye-slash"} id="togglePassword" defaultValue={card.password} onClick={handlePasswordClick}></i>
                     </div>
+
+                    <div className="form-group">
+                        <label>Confirm Password  <em>*</em></label>
+                        <input type="password" name="confirmPassword" 
+                         onChange={e => checkPasswordIsSame(e)} required/>
+                         <div className='password-confirm' id="password">
+                            <span className="confirmSamePassword" id={isSamePassword}>{textIsSamePassword}</span>
+                         </div>
+                    </div>
+
+
+                    <div className="form-group">
+                        <button type="submit" className="submit-btn" disabled={disableForm}>Make My QR</button>
+                    </div>
+
+                    </div>
+                    </form>
+
+                    { isMobile ? '' : <>
+                    <div className='right-form'>
+                        <h3>Upload Image</h3>
+                        <div>
+                            <ImageUploadWidget setFile={setImage} isMobile={isMobile} />
+                        </div>
+                        </div> 
+                    </>
+                    }
                 </div>
             </div>
+        </div>
         </>
     )
 }

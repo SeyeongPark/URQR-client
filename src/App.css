@@ -3,7 +3,7 @@
 	--dark-alt: #202B3E;
 	--ivory: #EBEBEB;
 	--yellow: #F6C848 ;
-	--yellow-dark: #e2b742 ;
+	--yellow-dark: #d7ab32 ;
 	--green: #326E39;
 	--blue: #255699;
 }
@@ -25,21 +25,32 @@
 }
 
 .input-form-container{
-	width: 54rem;	
+	width: 84rem;	
 	display: inline;
 	border-radius: 10px;
 	background-color: white;
 	box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%),
 		 0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
-    
+	max-width: 1000px;
 }
 
+.two-column-form {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between
+  }
+
 .input-form-title {
-  margin: 20px;
+  margin-left: 40px;
 }
 
 h2 {
-  	font-weight: 300;
+  	font-weight: 400;
+	font-size: 30px;
+}
+
+h3 {
+	font-weight:300;
 }
 
 h5 {
@@ -55,28 +66,64 @@ em {
 .container {
   display: flex;
   margin-bottom: 1rem;
-
 }
 
 .input-form{
-  	width: 800px;
+  	width: 500px;
 	height: 80%;
   	margin: 0 40px;
-	align-items: center;
-	justify-content: center;
 }
+
+.form-group {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	width: 49%;
+	margin-bottom: 5px;
+  }
+  
+.form-group:nth-of-type(4) {
+	width: 49%;
+	padding-right: 20px;
+  }
+
+.form-group:first-of-type,
+.form-group:nth-of-type(9),
+.form-group:nth-of-type(10),
+.form-group:last-of-type{
+	width: 100%;
+  }
+
+label {
+	position: relative;
+	top: 5px;
+	font-size: 16px;
+	color: #464646;
+	pointer-events: none;
+}	
 
 input, textarea {
 	padding: 10px;
-	margin: 10px 5px;
-	font-size: 14px;
+	margin: 10px 0;
+	font-size: 20px;
   	border: 1px solid rgb(201, 201, 201);
   	border-radius: 3px;
 }
 
 textarea {
-  min-width: 325px;
-  min-height: 50px;
+	resize: none;
+	min-height: 50px;
+}
+
+.form-group #togglePassword {
+	position:relative;
+	top: -40px;
+	left: 45px;
+	width: min-content;
+}
+
+.form-group #password-input {
+	padding-left: 40px;
 }
 
 form i {
@@ -85,20 +132,24 @@ form i {
     cursor: pointer;
 }
 
-.edit-password-confirm {
-	display: flex;
+
+.input-form-password {
+	display: block;
+	align-items: center;
+	justify-content: center;
 }
+
 
 .password-confirm {
  	width: 350px;
 	display: flex;
 	justify-content: right;
-	margin: -5px 0 0 0;
+	margin: -5px 0 0 -35px;
 }
 
 #password #true {
 	color: var(--green);
-	margin-top: -35px;
+	margin: -35px 70px 0 0;
 }
 
 #edit-password #false {
@@ -110,58 +161,47 @@ form i {
 	color: red;
 }
 
-.submit-btn {
+.right-form {
+	cursor: pointer;
+}
+
+.right-form #upload-lb {
+	color: #464646;
+	position: relative;
+	top: -5px;
+}
+
+.submit-btn,
+.submit-edit-btn {
   	border: none;
 	outline: none;
 	padding: 12px 0;
   	color: white;
+	width: 100%;
   	font-weight: 100;
-	background-color: var(--green);
+	background-color: var(--yellow);
   	border-radius: 5px;
-	width: 80px;
 	font-weight: bold;
-	font-size: 14px;
 	cursor: pointer;
-  	margin: 10px auto;
-  	justify-content: right;
+  	margin: 12px 0;
+	font-size: 20px;
 }
 
-label {
-    padding-bottom: 5px;
-    font-size: 13px;
+.submit-btn:hover {
+	background-color: var(--green);
+	transition-duration: 0.4s;
 }
+
+.form-group .submit-edit-btn:hover {
+	background-color: var(--blue);
+	transition-duration: 0.4s;
+}
+
+
 
 .qr-code-container {
 	text-align: center;
-	margin-top: -4rem;
-	width: 700px;
-}
-
-.input_card-item__NameTitle,
-.input_card_item_col2_NameTitle {
-	opacity: 0.6;
-	font-size: 13px;
-	margin: 6px 0 -2px 6px;
-	width: 35%;
-}
-
-.input_card_item_col2_NameTitle {
-	margin-left: -5.8rem;
-}
-
-.card-item__NameTitle,
-.card-item__col2_NameTitle {
-	opacity: 0.6;
-	font-size: 13px;
-	margin: 6px 0 -2px 6px;
-	width: 100%;
-}
-.card-item__col2_NameTitle {
-	margin-left: -15px;
-}
-
-.card-item__title{
-	display: flex;
+	margin-top: -2rem;
 }
 
 .form-bottom {
@@ -187,14 +227,21 @@ label {
 	color: var(--green);
 }
 
-.edit-form-bottom .link-back-to {
-	color: var(--dark-alt);
+.form-group #create-a,
+.form-group #edit-a
+{
 	text-decoration: none;
+	font-size: 25px;
 }
 
-.input-edit-password{
-	height: 20px;
-	margin-top: 10px;
+.form-group #create-a
+{
+	color: var(--green);
+}
+
+.form-group #edit-a
+{
+	color: var(--blue);
 }
 
 .btn-edit-password {
@@ -212,13 +259,8 @@ label {
 }
 
 .btn-edit-password:hover {
-	background-color: var(--yellow-dark);
-	transition-duration: 0.4s;
-}
-
-textarea {
-	font-family: Arial, Helvetica, sans-serif;
-	resize: none;
+	background-color: var(--blue);
+	transition-duration: 0.8s;
 }
 
 .btn-download {
