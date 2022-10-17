@@ -7,11 +7,11 @@ let now = new Date();
 now = + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
 const today = new Date().toISOString().substring(0, 10);
 
-// const URL_BASE = "https://sptech-urqr.herokuapp.com";
-const URL_BASE = "http://localhost:3000";
+const URL_BASE = "https://sptech-urqr.herokuapp.com";
+// const URL_BASE = "http://localhost:3000";
 
-// const API_BASE = "https://sptech-urqr-api.herokuapp.com";
-const API_BASE = "http://localhost:3001";
+const API_BASE = "https://sptech-urqr-api.herokuapp.com";
+// const API_BASE = "http://localhost:3001";
 
 const EditCard = (props) => {
     let { qrText } = useParams();

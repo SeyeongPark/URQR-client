@@ -6,8 +6,8 @@ const InputData = (props) => {
     let now = new Date();
     now = + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
 
-    const API_BASE = "http://localhost:3001";
-    // const API_BASE = "https://sptech-urqr-api.herokuapp.com";
+    // const API_BASE = "http://localhost:3001";
+    const API_BASE = "https://sptech-urqr-api.herokuapp.com";
 
     const [card, setCard] = useState([]);
     const [codeText, setCodeText] = useState('');
