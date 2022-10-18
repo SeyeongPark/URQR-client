@@ -191,28 +191,28 @@ const Edit = ({cardInfo, qrText}) => {
 
                 <div className="form-group">
                     <label>Birth Date</label>
-                    <input id="birth" type="date" placeholder="Date of Birth" defaultValue={card.birth} max={today} onChange={e => setBirth(e.target.value)} />
+                    <input id="birth" type="date" defaultValue={card.birth} max={today} onChange={e => setBirth(e.target.value)} />
                 </div>
 
                 <div className="form-group">
                     <label>Cell Phone<em> *</em></label>
-                    <input id="cellPhone" type="text" placeholder="Cell Phone" defaultValue={card.cellPhone} onChange={e => setCellPhone(e.target.value)} required />
+                    <input id="cellPhone" type="text" defaultValue={card.cellPhone} onChange={e => setCellPhone(e.target.value)} required />
                 </div>
 
                 <div className="form-group">
                     <label>Home Phone</label>
-                    <input id="homePhone" type="text" placeholder="Home Phone"
+                    <input id="homePhone" type="text"
                 defaultValue={card.homePhone} onChange={e => setHomePhone(e.target.value)} />
                 </div>
 
                 <div className="form-group">
                     <label>School Name</label>
-                    <input id="schoolName" type="text" placeholder="School Name" defaultValue={card.schoolName} onChange={e => setSchoolName(e.target.value)} />
+                    <input id="schoolName" type="text" defaultValue={card.schoolName} onChange={e => setSchoolName(e.target.value)} />
                 </div>
 
                 <div className="form-group">
                     <label>School Phone</label>
-                    <input id="schoolPhone" type="text" placeholder="School Phone Number" defaultValue={card.schoolPhone} onChange={e => setSchoolPhone(e.target.value)} />
+                    <input id="schoolPhone" type="text" defaultValue={card.schoolPhone} onChange={e => setSchoolPhone(e.target.value)} />
                 </div>
 
                 <div className="form-group">
@@ -231,13 +231,13 @@ const Edit = ({cardInfo, qrText}) => {
 
                 <div className="form-group">
                 <label>Password<em> *</em></label>
-                <input id="password-input" type={isHiden ? "password" : "text"} name="password" placeholder="Password" onChange={e => setPassword(e.target.value)} />
+                <input id="password-input" type={isHiden ? "password" : "text"} name="password" onChange={e => setPassword(e.target.value)} />
                 <i className={isToggleOn ? "bi-eye" : "bi bi-eye-slash"} id="togglePassword" defaultValue={card.password} onClick={handlePasswordClick}></i>
                 </div>
 
                 <div className="form-group">
                     <label>Confirm Password<em> *</em></label>
-                    <input type="password" name="confirmPassword" placeholder="Confirm Password" onChange={e => checkPasswordIsSame(e)} required />
+                    <input type="password" name="confirmPassword" onChange={e => checkPasswordIsSame(e)} required />
                     <div className='password-confirm' id="password">
                         <span className="confirmSamePassword" id={isSamePassword}>{textIsSamePassword}</span>
                     </div>
