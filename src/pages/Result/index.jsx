@@ -18,7 +18,7 @@ function Result() {
     const [isMobile, setIsMobile] = useState(false);
 
     let qrText = location.state.qrText;
-    let urlQrText = URL_BASE + '/code/' + location.state.qrText;
+    let urlQrText = URL_BASE + '/search/' + location.state.qrText;
 
     const URL_EDIT = URL_BASE + '/edit/' + qrText;
 
@@ -84,33 +84,33 @@ function Result() {
                 
                             <div className="form-group">
                                 <label>Birth Date</label>
-                                <input id="birth" type="date" placeholder="Date of Birth" defaultValue={card.birth} disabled />
+                                <input id="birth" type="date" defaultValue={card.birth} disabled />
                             </div>
                 
                             <div className="form-group">
                                 <label>Cell Phone<em> *</em></label>
-                                <input id="cellPhone" type="text" placeholder="Cell Phone" defaultValue={card.cellPhone} disabled/>
+                                <input id="cellPhone" type="text" defaultValue={card.cellPhone} disabled/>
                             </div>
                 
                             <div className="form-group">
                                 <label>Home Phone</label>
-                                <input id="homePhone" type="text" placeholder="Home Phone"
+                                <input id="homePhone" type="text" 
                                defaultValue={card.homePhone} disabled />
                             </div>
                 
                             <div className="form-group">
                                 <label>School Name</label>
-                                <input id="schoolName" type="text" placeholder="School Name" defaultValue={card.schoolName} disabled />
+                                <input id="schoolName" type="text" defaultValue={card.schoolName} disabled />
                             </div>
                 
                             <div className="form-group">
                                 <label>School Phone</label>
-                                <input id="schoolPhone" type="text" placeholder="School Phone Number" defaultValue={card.schoolPhone} disabled/>
+                                <input id="schoolPhone" type="text" defaultValue={card.schoolPhone} disabled/>
                             </div>
                 
                             <div className="form-group">
                                 <label>Special Information</label>
-                                <textarea id="addInfo" type="text" placeholder="Special needs, medical conditions, allergies, Important information" defaultValue={card.addInfo} disabled/>
+                                <textarea id="addInfo" type="text" defaultValue={card.addInfo} disabled/>
                             </div>
                             
                             <div className="form-group"/>

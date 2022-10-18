@@ -116,7 +116,6 @@ const InputData = (props) => {
                     <form className="input-form" onSubmit={submitForm}>
                     <div className="two-column-form">
                     <div className="form-group"/>
-
                     <div className="form-group">
                         <label>First Name<em> *</em></label>
                         <input id="firstName" type="text" 
@@ -155,7 +154,7 @@ const InputData = (props) => {
 
                     <div className="form-group">
                         <label>School Phone</label>
-                        <input id="schoolPhone" type="text" placeholder="School Phone Number"
+                        <input id="schoolPhone" type="text"
                         onChange={e => setSchoolPhone(e.target.value)} />
                     </div>
 
