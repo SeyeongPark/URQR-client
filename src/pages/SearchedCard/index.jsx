@@ -3,7 +3,7 @@ import { useParams, useLocation } from "react-router-dom";
 import QRCode from 'qrcode';
 import { useEffect } from 'react';
 
-function SearchCard() {
+function SearchedCard() {
 
     const API_BASE = "https://sptech-urqr-api.herokuapp.com";
     // const API_BASE = "http://localhost:3001";
@@ -138,4 +138,4 @@ function SearchCard() {
 }
 
 
-export default SearchCard;
+export default SearchedCard;

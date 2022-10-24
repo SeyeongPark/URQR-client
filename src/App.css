@@ -44,6 +44,40 @@
   margin-left: 40px;
 }
 
+.input-search input {
+	margin: 10px;
+	height: 100px;
+	width: 100px;
+	border: none;
+	border-radius: 5px;
+	text-align: center;
+	font-size: 6rem;
+	background: white;
+	text-transform: uppercase;
+}
+
+.input-search button {
+	position: relative;
+	top: -25px;
+	margin: 10px;
+	height: 120px;
+	width: 120px;
+	border: none;
+	border-radius: 5px;
+	text-align: center;
+	font-size: 23px;
+	background: var(--green);
+	color: white;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+.input-search button:hover {
+	background: var(--yellow);
+	transition-duration: 0.4s;
+
+}
+
 h2 {
   	font-weight: 400;
 	font-size: 30px;
