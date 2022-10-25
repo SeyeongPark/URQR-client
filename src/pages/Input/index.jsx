@@ -6,8 +6,9 @@ const InputData = (props) => {
     let now = new Date();
     now = + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
 
-    // const API_BASE = "http://localhost:3001";
+    const URL_BASE = "https://sptech-urqr.herokuapp.com";
     const API_BASE = "https://sptech-urqr-api.herokuapp.com";
+    const URL_SEARCH = URL_BASE + "/search";
 
     const [card, setCard] = useState([]);
     const [codeText, setCodeText] = useState('');
@@ -57,8 +58,7 @@ const InputData = (props) => {
         const data = await fetch(API_BASE + "/card/new", {
             method: 'POST',
             body: formData
-        })
-            .then(navigate(`/result`, { state: { qrText: code } }))
+        }).then(navigate(`/result`, { state: { qrText: code } }))
 
         setCard([...card, data]);
         setCodeText('');
@@ -171,7 +171,7 @@ const InputData = (props) => {
                             <ImageUploadWidget setFile={setImage} isMobile={isMobile} />
                         </div>
                         : '' }
-                        </div>
+                    </div>
                     
                     <div className="form-group">
                         <label>Password<em> *</em></label>
@@ -191,6 +191,10 @@ const InputData = (props) => {
 
                     <div className="form-group">
                         <button type="submit" className="submit-btn" disabled={disableForm}>Make My QR</button>
+                        { isMobile ? 
+                        <div className='search-href'>
+                            <a href={URL_SEARCH}> Search a code</a>
+                        </div> : '' }
                     </div>
 
                     </div>
@@ -202,6 +206,9 @@ const InputData = (props) => {
                         <div>
                             <ImageUploadWidget setFile={setImage} isMobile={isMobile} />
                         </div>
+                        <div className='search-href'>
+                            <a href={URL_SEARCH}> Search a code</a>
+                        </div> 
                         </div> 
                     </>
                     }

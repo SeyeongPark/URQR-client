@@ -89,15 +89,6 @@
         margin-top: -35px;
     }
     
-    #edit-password #false {
-        color: red;
-        padding-left: 5px;
-    }
-    
-    #password #false {
-        color: red;
-    }
-    
     label {
         padding-bottom: 5px;
         font-size: 15px;
@@ -195,4 +186,16 @@
         color: var(--dark-alt);
     }
 
+    .search-href {
+        margin-top: -.5rem;
+        width: 100%;
+        display: block;
+        text-align: left;
+    }
+    
+    .search-href a {
+        color: var(--gray);
+        font-size: 20px;
+        width: 100%;
+    }
 }

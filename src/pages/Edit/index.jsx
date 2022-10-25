@@ -67,8 +67,11 @@ const EditCard = (props) => {
                             <div className='edit-password-confirm' id="edit-password">
                                 <span className="confirmSamePassword" id={isSamePassword}>{textIsSamePassword}</span>
                             </div>
-                        </form>
-                    </div>}
+                            <div className='search-href' style={{marginTop: '6rem'}}>
+                                <a style={{color: 'grey', fontSize: '15px'}} href={URL_BASE + '/search/' + qrText}>Back to previous page</a>
+                            </div>
+                            </form>
+                        </div>}
             </div>
         </>
     )
@@ -225,8 +228,7 @@ const Edit = ({cardInfo, qrText}) => {
                     <div className="right-form">
                         <label id="upload-lb">Upload Image</label>
                         <ImageUploadWidget setFile={setImage} isMobile={isMobile} />
-                    </div>
-                    : '' }
+                    </div> : '' }
                 </div>
 
                 <div className="form-group">
@@ -244,11 +246,17 @@ const Edit = ({cardInfo, qrText}) => {
                 </div>
 
                 <div className="form-group">
-                <button type="submit" className="submit-edit-btn" disabled={disableForm}>Edit My QR</button>
-            </div>    
-            
+                    <button type="submit" className="submit-edit-btn" disabled={disableForm}>Edit My QR</button>
                 </div>
+
+            
             </div>
+                { isMobile ? 
+                <div className='search-href' style={{marginTop: '0rem'}}>
+                    <a style={{color: 'grey', fontSize: '18px'}} href={URL_BASE + '/search/' + qrText}>Back to previous page</a>
+                </div>
+                    : '' }    
+                </div>
             ))}
             </form>
 
@@ -258,6 +266,9 @@ const Edit = ({cardInfo, qrText}) => {
                     <div>
                         <ImageUploadWidget setFile={setImage} isMobile={isMobile} />
                     </div>
+                    <div className='search-href' style={{marginTop: '6rem'}}>
+                        <a style={{color: 'grey', fontSize: '15px'}} href={URL_BASE + '/search/' + qrText}>Back to previous page</a>
+                        </div>
                     </div> 
                 </>
                 }
