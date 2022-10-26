@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import 'animate.css';
 import ImageUploadWidget from '../../app/common/ImageUploadWidget';
+import Swal from 'sweetalert2'
 
 let now = new Date();
 now = + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
@@ -10,15 +11,15 @@ const today = new Date().toISOString().substring(0, 10);
 const URL_BASE = "https://sptech-urqr.herokuapp.com";
 // const URL_BASE = "http://localhost:3000";
 
-const API_BASE = "https://sptech-urqr-api.herokuapp.com";
-// const API_BASE = "http://localhost:3001";
+// const API_BASE = "https://sptech-urqr-api.herokuapp.com";
+const API_BASE = "http://localhost:3001";
 
 const EditCard = (props) => {
     let { qrText } = useParams();
     let [isAuth, setIsAuth] = useState(false);
     let [cardInfo, setCardInfo] = useState([]);
     let [inputPassword, setInputPassword] = useState('');
-    
+
     useEffect(() => {
         GetCardInfo(qrText)
     }, [qrText])
@@ -77,7 +78,7 @@ const EditCard = (props) => {
     )
 }
 
-const Edit = ({cardInfo, qrText}) => {
+const Edit = ({cardInfo, qrText, cardId}) => {
     let submitCard = {};
     let [firstName, setFirstName] = useState('');
     let [lastName, setLastName] = useState('');
@@ -165,6 +166,46 @@ const Edit = ({cardInfo, qrText}) => {
             .catch(err => console.error(err));
     }
 
+    const deleteCard = async (cardInfo) => { 
+        const imgName = cardInfo[0].imageUrl.slice(50).replace( /%20/gi, ' ');
+
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then(async (result) => {
+            if (result.isConfirmed) {
+                if(cardInfo[0].imageUrl){
+                    await fetch(API_BASE + '/delete-image-test', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({key: imgName})
+                    })
+                    .then(res => res.json())
+                    .catch(err => console.error (err))
+                }
+        
+                await fetch(API_BASE + '/card/delete/' + cardInfo[0]._id, {method: "DELETE"})
+                .then(res => res.json())
+                .then(res => console.log('card delete'))
+
+                Swal.fire(
+                    'Deleted!',
+                    'Your card has been deleted.',
+                    'success'
+              ).finally(navigate(`/`))
+            }
+          })
+
+      
+        }
+        
+        
 
     return ( 
     <div className="input-container">
@@ -252,9 +293,12 @@ const Edit = ({cardInfo, qrText}) => {
             
             </div>
                 { isMobile ? 
+                <>
+                <div className="delete-card" onClick={()=> deleteCard(cardInfo)}>Delete Card</div>
                 <div className='search-href' style={{marginTop: '0rem'}}>
                     <a style={{color: 'grey', fontSize: '18px'}} href={URL_BASE + '/search/' + qrText}>Back to previous page</a>
                 </div>
+                </>
                     : '' }    
                 </div>
             ))}
@@ -267,6 +311,7 @@ const Edit = ({cardInfo, qrText}) => {
                         <ImageUploadWidget setFile={setImage} isMobile={isMobile} />
                     </div>
                     <div className='search-href' style={{marginTop: '6rem'}}>
+                        <div className="delete-card" onClick={()=> deleteCard(cardInfo)}>Delete Card</div>
                         <a style={{color: 'grey', fontSize: '15px'}} href={URL_BASE + '/search/' + qrText}>Back to previous page</a>
                         </div>
                     </div> 
