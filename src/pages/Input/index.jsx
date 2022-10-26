@@ -5,6 +5,8 @@ import ImageUploadWidget from '../../app/common/ImageUploadWidget';
 const InputData = (props) => {
     let now = new Date();
     now = + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+    const today = new Date().toISOString().substring(0, 10);
+    const currentDate = now + ' ' + today;
 
     const URL_BASE = "https://sptech-urqr.herokuapp.com";
     const API_BASE = "https://sptech-urqr-api.herokuapp.com";
@@ -23,8 +25,6 @@ const InputData = (props) => {
     const [password, setPassword] = useState('');
     const [image, setImage] = useState();
     const navigate = useNavigate();
-    
-    const today = new Date().toISOString().substring(0, 10);
     
     const [isMobile, setIsMobile] = useState(false);
     useEffect(()=>{
@@ -48,7 +48,7 @@ const InputData = (props) => {
             schoolPhone: schoolPhone,
             addInfo: addInfo,
             password: password,
-            issueDate: now
+            issueDate: currentDate
         }
         let formData = new FormData();
         for (const key in object) {

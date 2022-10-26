@@ -7,12 +7,10 @@ import Swal from 'sweetalert2'
 let now = new Date();
 now = + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
 const today = new Date().toISOString().substring(0, 10);
+const currentDate = now + ' ' + today;
 
 const URL_BASE = "https://sptech-urqr.herokuapp.com";
-// const URL_BASE = "http://localhost:3000";
-
-// const API_BASE = "https://sptech-urqr-api.herokuapp.com";
-const API_BASE = "http://localhost:3001";
+const API_BASE = "https://sptech-urqr-api.herokuapp.com";
 
 const EditCard = (props) => {
     let { qrText } = useParams();
@@ -148,7 +146,7 @@ const Edit = ({cardInfo, qrText, cardId}) => {
             schoolPhone: schoolPhone === '' ? submitCard.schoolPhone : schoolPhone,
             addInfo: addInfo === '' ? submitCard.addInfo : addInfo,
             password: password === '' ? submitCard.password : password,
-            issueDate: now
+            issueDate: currentDate
         }
 
         let formData = new FormData();
