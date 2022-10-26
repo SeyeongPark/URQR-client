@@ -325,3 +325,8 @@ form i {
 	text-decoration: none;
 	color: var(--dark)
 }
+
+.delete-card {
+	color: red;
+	margin-bottom: 10px;
+}

@@ -294,8 +294,8 @@ const Edit = ({cardInfo, qrText, cardId}) => {
             </div>
                 { isMobile ? 
                 <>
-                <div className="delete-card" onClick={()=> deleteCard(cardInfo)}>Delete Card</div>
-                <div className='search-href' style={{marginTop: '0rem'}}>
+                <div className='search-href' style={{padding: '1rem 0'}}>
+                    <a style={{color: 'red', fontSize: '18px', marginRight: '4rem'}} onClick={()=> deleteCard(cardInfo)}>Delete Card</a>
                     <a style={{color: 'grey', fontSize: '18px'}} href={URL_BASE + '/search/' + qrText}>Back to previous page</a>
                 </div>
                 </>
