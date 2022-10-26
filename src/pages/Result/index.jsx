@@ -7,10 +7,8 @@ import { useEffect } from 'react';
 function Result() {
 
     const API_BASE = "https://sptech-urqr-api.herokuapp.com";
-    // const API_BASE = "http://localhost:3001";
-
-    // const URL_BASE = "http://localhost:3000";
     const URL_BASE = "https://sptech-urqr.herokuapp.com";
+    const URL_SEARCH = URL_BASE + "/search";
 
     const [cardInfo, setCardInfo] = useState([])
     const [qrCode, setQrCode] = useState("")
@@ -24,7 +22,6 @@ function Result() {
 
     useEffect(() => {
         GetCardInfo(qrText)
-        console.log()
         qrText = location.state.qrText;
         generateQrCode()
 
@@ -122,7 +119,11 @@ function Result() {
                             <div className="form-group">
                                 <a id="edit-a" href={URL_EDIT}> Edit Card</a>
                             </div>
-
+                            
+                            { isMobile ? 
+                            <div className='search-href' style={{margin:'1rem 0 2rem 0'}}>
+                                <a href={URL_SEARCH}> Search a code</a>
+                            </div> : ''}
                             <div className="form-group"/>
 
                             </div>
@@ -134,6 +135,9 @@ function Result() {
                         <img src={qrCode} />
                         <h5>{qrText}</h5>
                         <a className="btn-download" href={qrCode} download={`URQR-${qrText}.png`}>download</a>
+                    <div className='search-href' style={{marginTop:'3.5rem'}}>
+                            <a href={URL_SEARCH}> Search a code</a>
+                    </div>
                     </div>
                     </>}
 

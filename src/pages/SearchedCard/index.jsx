@@ -3,13 +3,12 @@ import { useParams, useLocation } from "react-router-dom";
 import QRCode from 'qrcode';
 import { useEffect } from 'react';
 
-function SearchCard() {
+function SearchedCard() {
 
     const API_BASE = "https://sptech-urqr-api.herokuapp.com";
-    // const API_BASE = "http://localhost:3001";
-
     const URL_BASE = "https://sptech-urqr.herokuapp.com";
-    // const URL_BASE = "http://localhost:3000";
+
+    const URL_SEARCH = URL_BASE + "/search";
 
 
     const [cardInfo, setCardInfo] = useState([])
@@ -32,7 +31,6 @@ function SearchCard() {
             .then(res => res.json())
             .then(data => {
                 setCardInfo(data);
-                console.log(data)
             })
             .catch(err => console.error(err))
     }
@@ -119,12 +117,19 @@ function SearchCard() {
 
                     <div className="form-group"/>
                     
+                    { isMobile ? 
+                    <div className='search-href' style={{margin:'-.5rem 0 2rem 0'}}>
+                        <a href={URL_SEARCH}> Search a code</a>
+                    </div> : ''}
                     </div>
                     </form>
                     
                     { isMobile ? '' : <>
                     <div className='right-form'>
                         <img src={card.imageUrl == '' ? defaultImgUrl : card.imageUrl} style={{objectFit: 'contain', width: '380px', height: '470px'}} alt="Image"/>
+                    <div className='search-href' style={{marginTop:'1rem'}}>
+                        <a href={URL_SEARCH}> Search a code</a>
+                    </div>
                     </div> 
                     </>}
 
@@ -138,4 +143,4 @@ function SearchCard() {
 }
 
 
-export default SearchCard;
+export default SearchedCard;

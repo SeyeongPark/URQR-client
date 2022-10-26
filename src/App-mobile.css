@@ -89,15 +89,6 @@
         margin-top: -35px;
     }
     
-    #edit-password #false {
-        color: red;
-        padding-left: 5px;
-    }
-    
-    #password #false {
-        color: red;
-    }
-    
     label {
         padding-bottom: 5px;
         font-size: 15px;
@@ -195,4 +186,67 @@
         color: var(--dark-alt);
     }
 
+    .search-msg {
+        margin-top: -9rem ;
+    }
+
+    .search-href {
+        margin-top: 0rem;
+    }
+    
+    .search-href a {
+        color: var(--gray);
+        font-size: 20px;
+        width: 100%;
+    }
+
+    .input-search-container {
+        /* position: absolute;
+        width: 400px;
+        height: 400px;
+        text-align: center;
+        margin-left: -200px;
+        margin-top: -200px;
+        left: 50%;
+        top: 50%; */
+    }
+
+    .input-search-container h1 {
+        font-size: 20px;
+    }
+    
+    .input-search {
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        text-align: center;
+        margin-left: -200px;
+        margin-top: -120px;
+        left: 50%;
+        top: 50%;
+    }
+
+    .input-search input {
+        margin: 10px;
+        height: 20px;
+        width: 20px;
+        border: none;
+        border-radius: 5px;
+        text-align: center;
+        font-size: 20px;
+        background: var(--gray-light);
+        text-transform: uppercase;
+    }
+    
+    .input-search button {
+        margin-top: 100px;
+        height: 50px;
+        font-size: 15px;
+    }
+    
+    .input-search button:hover {
+        background: var(--yellow);
+        transition-duration: 0.4s;
+    
+    }
 }
