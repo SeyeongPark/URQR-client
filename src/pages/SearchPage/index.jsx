@@ -34,19 +34,16 @@ const SearchPage = () => {
             .then(res => res.json())
             .then(data => {
                 setCardInfo(data);
-            if(data.length > 0) {
-                setIsVaildCode(true)
-                navigate('/search/' + codeText);
-            } else { setIsVaildCode(false)}
+            data.length > 0 ? navigate('/search/' + codeText) : setIsVaildCode(false)
             })
             .catch(err => console.error(err))
     }
 
     return (
-        <div className="input-container">
+        <div className="input-search-container">
              <div style={{ textAlign:"center"}} className="container-edit-password">
-                <h1>SEARCH CARD CODE</h1>
                 <div className='input-search'>
+                <h1>SEARCH CARD CODE</h1>
                     <form onSubmit={searchCode}>
                         <input type='text' id='is-first' maxLength={1} onKeyUp={e => clickEventUp(e.target.value, 'is-second', null)} onChange={e => setFirst(e.target.value)} /> 
                         <input type='text' id='is-second' maxLength={1} onKeyUp={e => clickEventUp(e.target.value, 'is-third', 'is-first')} onChange={e => setSecond(e.target.value)}/> 
@@ -54,7 +51,7 @@ const SearchPage = () => {
                         <input type='text' id='is-fourth' maxLength={1} onKeyUp={e => clickEventUp(e.target.value, 'is-fifth', 'is-third')} onChange={e => setFourth(e.target.value)}/> 
                         <input type='text' id='is-fifth' maxLength={1} onKeyUp={e => clickEventUp(e.target.value, null, 'is-fourth')} onChange={e => setFifth(e.target.value)}/> 
                     <button type='submit'>Search</button>
-                    <div>
+                    <div className='search-msg'>
                         {!isVaildCode ? 
                         <span style={{color:'red', fontSize:'22px'}}>Hmm.. This code cannot be found</span> 
                         :  <span style={{fontSize:'22px'}}>&nbsp;</span> }
