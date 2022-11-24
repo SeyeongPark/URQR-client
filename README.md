@@ -1,70 +1,25 @@
-# Getting Started with Create React App
+# URQR
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🔎 Details
+A web/mobile application that generates a QR code that shows child information for an emergency card when scanned by a phone camera.
+URQR makes your QR(Quick Response) code which can store your child's information! In this QR code, you can store contact information to check the child’s protector. With a phone camera, you can scan the QR code easily and it will show your child's card information page!
 
-## Available Scripts
+### [v1.0] - SEPTEMBER 30 
+<li>Generating a QR code with input information(Name, BirthDate, Phone number, School Info, Special Info, and password)
+<li>Checking the card information page by scanning the QR code using a phone camera
+<li>Editing/Updating card information (require a password)
 
-In the project directory, you can run:
+### [v2.0] - OCTOBER 16
+<li>[New features] Uploading an image in a card to help identify your child
+<li>Designing a user interface for the mobile version
 
-### `npm start`
+### [v3.0] - OCTOBER 26
+<li>Designing new UX/UI for searching card page
+<li>[New features] Deleting a card (require a password)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![image](https://user-images.githubusercontent.com/67844037/203667815-70bb2d7b-7384-46cb-9baf-36c60567a9f5.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📚 What I’ve learned
+- Interacting with external libraries' framework (react-qr-code) and components
+- The concept of asynchronous and synchronous
+- The generating a QR code and resulting
