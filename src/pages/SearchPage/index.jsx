@@ -40,6 +40,7 @@ const SearchPage = () => {
     }
 
     return (
+        <div className="background">
         <div className="input-search-container">
              <div style={{ textAlign:"center"}} className="container-edit-password">
                 <div className='input-search'>
@@ -59,10 +60,11 @@ const SearchPage = () => {
                     </form>
                 </div>
             <div className='search-href'>
-                <a href={URL_BASE}> BACK TO HOME</a>
+                <a href="/create"> BACK TO HOME</a>
             </div>
         </div>
-            </div>
+    </div>
+    </div>
     )
 }
 

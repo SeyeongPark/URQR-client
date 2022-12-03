@@ -9,6 +9,7 @@ import Result from './pages/Result';
 import SearchPage from './pages/SearchPage';
 import SearchedCard from './pages/SearchedCard';
 import SampleFormImageUpload from './app/Sample/SampleFormImageUpload';
+import Main from './pages/Main';
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
         <Routes>
           <Route path='/error' element={<ErrorPage/>}/>
 
-          <Route path='/' element={<InputData/>}/>
+          <Route path='/' element={<Main/>}/>
+          <Route path='/create' element={<InputData/>}/>
           <Route path='/result' element={<Result/>} />
           <Route path='/edit/:qrText' element={<EditCard/>}/>
           {/* Search page that allow to input CODE */}

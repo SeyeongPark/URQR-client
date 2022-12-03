@@ -110,7 +110,7 @@ const InputData = (props) => {
         <div className="input-container">
             <div className="input-form-container">
                 <div className="input-form-title">
-                    <h2>Create new information card</h2>
+                    <h2>Create new card</h2>
                 </div>
                 <div className="container">
                     <form className="input-form" onSubmit={submitForm}>
