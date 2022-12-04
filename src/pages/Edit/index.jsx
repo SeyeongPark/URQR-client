@@ -57,20 +57,23 @@ const EditCard = (props) => {
                 { isAuth ? (
                     <Edit qrText={qrText} cardInfo={cardInfo}/>
                 ) :
-                    <div className="container-edit-password">
+                    <div className="background">
+                    <div className="container-edit-password" style={{ textAlign:"center"}} >
                         <form className="input-form-password" onSubmit={checkPassword}>
-                            <h2>Password for editing <b>{qrText}</b></h2>
+                            <h2 style={{fontSize: "18px"}}>Password for editing <b>{qrText}</b></h2>
                             <input type="password" id='input-edit-password'
                                 onChange={e => setInputPassword(e.target.value)}></input>
-                            <button className='btn-edit-password' type="submit">Enter</button>
+                            <button className='btn-edit-password' type="submit" style={{fontSize: "18px"}}>Enter</button>
                             <div className='edit-password-confirm' id="edit-password">
                                 <span className="confirmSamePassword" id={isSamePassword}>{textIsSamePassword}</span>
                             </div>
                             <div className='search-href' style={{marginTop: '6rem'}}>
-                                <a style={{color: 'grey', fontSize: '15px'}} href={URL_BASE + '/search/' + qrText}>Back to previous page</a>
+                                <a style={{color: 'grey', fontSize: '15px'}} href={'/search/' + qrText}>Back to card info</a>
                             </div>
                             </form>
-                        </div>}
+                        </div>
+                    </div>
+                    }
             </div>
         </>
     )
@@ -294,7 +297,7 @@ const Edit = ({cardInfo, qrText, cardId}) => {
                 <>
                 <div className='search-href' style={{padding: '1rem 0'}}>
                     <a style={{color: 'red', fontSize: '18px', marginRight: '4rem'}} onClick={()=> deleteCard(cardInfo)}>Delete Card</a>
-                    <a style={{color: 'grey', fontSize: '18px'}} href={URL_BASE + '/search/' + qrText}>Back to previous page</a>
+                    <a style={{color: 'grey', fontSize: '18px'}} href={'/search/' + qrText}>Back to card info</a>
                 </div>
                 </>
                     : '' }    
@@ -310,7 +313,7 @@ const Edit = ({cardInfo, qrText, cardId}) => {
                     </div>
                     <div className='search-href' style={{marginTop: '6rem'}}>
                         <div className="delete-card" onClick={()=> deleteCard(cardInfo)}>Delete Card</div>
-                        <a style={{color: 'grey', fontSize: '15px'}} href={URL_BASE + '/search/' + qrText}>Back to previous page</a>
+                        <a style={{color: 'grey', fontSize: '15px'}} href={'/search/' + qrText}>Back to card info</a>
                         </div>
                     </div> 
                 </>

@@ -113,16 +113,16 @@ function Result() {
                             <div className="form-group"/>
 
                             <div className="form-group">
-                                <a id="create-a" href={URL_BASE}> Create new code</a>
+                                <a id="create-a" href="/"> Create new code</a>
                             </div>
 
                             <div className="form-group">
-                                <a id="edit-a" href={URL_EDIT}> Edit Card</a>
+                                <a id="edit-a" href={"/edit/"+qrText}> Edit Card</a>
                             </div>
                             
                             { isMobile ? 
                             <div className='search-href' style={{margin:'1rem 0 2rem 0'}}>
-                                <a href={URL_SEARCH}> Search a code</a>
+                                <a href="/search"> Search a code</a>
                             </div> : ''}
                             <div className="form-group"/>
 
@@ -136,7 +136,7 @@ function Result() {
                         <h5>{qrText}</h5>
                         <a className="btn-download" href={qrCode} download={`URQR-${qrText}.png`}>download</a>
                     <div className='search-href' style={{marginTop:'3.5rem'}}>
-                            <a href={URL_SEARCH}> Search a code</a>
+                            <a href="/search"> Search a code</a>
                     </div>
                     </div>
                     </>}

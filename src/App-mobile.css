@@ -93,12 +93,6 @@
         font-size: 13px;
     }
 
-    .nav-box a {
-        color: var(--dark-alt);
-        text-decoration: none;
-    }
-
-
     .input-form input,
     .input-form textarea {
         font-size: 14px;
@@ -232,7 +226,7 @@
     }
 
     .search-href {
-        margin-top: 23rem;
+        margin-top: 0;
     }
     
     .search-href a {
@@ -265,7 +259,7 @@
     }
     
     .input-search button {
-        margin-top: 100px;
+        margin-top: 70px;
         height: 50px;
         font-size: 15px;
     }

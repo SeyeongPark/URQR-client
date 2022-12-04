@@ -18,6 +18,10 @@
 	background-size: cover;
 }
 
+.input-search{
+	margin-top: 20rem;
+}
+
 .input-search-container,
 .input-container{
 	width: 100%;
@@ -29,10 +33,16 @@
 
 .nav-container {
 	width: 100%;
-	display: flex;
 	gap: 3rem;
+	display: flex;
 	justify-content: center;
 	align-items: center;
+	text-align: center;
+}
+
+.nav-box a {
+	color: var(--dark-alt);
+	text-decoration: none;
 }
 
 .nav-box {
@@ -54,7 +64,6 @@
 	width: 110px;
 	margin-top: 50px;
 }
-
 
 .input-form-container{
 	width: 84rem;	

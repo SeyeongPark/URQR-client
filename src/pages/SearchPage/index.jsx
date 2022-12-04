@@ -59,8 +59,8 @@ const SearchPage = () => {
                     </div>
                     </form>
                 </div>
-            <div className='search-href'>
-                <a href="/create"> BACK TO HOME</a>
+            <div className='search-href' style={{marginTop: "20rem"}}>
+                <a href="/"> Back to main</a>
             </div>
         </div>
     </div>

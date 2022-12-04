@@ -193,7 +193,7 @@ const InputData = (props) => {
                         <button type="submit" className="submit-btn" disabled={disableForm}>Make My QR</button>
                         { isMobile ? 
                         <div className='search-href'>
-                            <a href={URL_SEARCH}> Search a code</a>
+                            <a href="/">Back to main</a>
                         </div> : '' }
                     </div>
 
@@ -207,7 +207,7 @@ const InputData = (props) => {
                             <ImageUploadWidget setFile={setImage} isMobile={isMobile} />
                         </div>
                         <div className='search-href'>
-                            <a href={URL_SEARCH}> Search a code</a>
+                            <a href="/">Back to main</a>
                         </div> 
                         </div> 
                     </>

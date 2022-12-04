@@ -1,9 +1,10 @@
 import CardFrame from "./card-frame"
-
+import logo from '../../assets/images/urqr-logo.png'
 const Main = () => {
  return (
     <div className="background">
     <div className="input-container">
+        {/* <img src={logo} alt="logo" width={"100px"}/> */}
         <div className="nav-container">
             <CardFrame
                 title="Create Card"

@@ -119,7 +119,7 @@ function SearchedCard() {
                     
                     { isMobile ? 
                     <div className='search-href' style={{margin:'-.5rem 0 2rem 0'}}>
-                        <a href={URL_SEARCH}> Search a code</a>
+                        <a href="/search"> Search a code</a>
                     </div> : ''}
                     </div>
                     </form>
@@ -128,7 +128,7 @@ function SearchedCard() {
                     <div className='right-form'>
                         <img src={card.imageUrl == '' ? defaultImgUrl : card.imageUrl} style={{objectFit: 'contain', width: '380px', height: '470px'}} alt="Image"/>
                     <div className='search-href' style={{marginTop:'1rem'}}>
-                        <a href={URL_SEARCH}> Search a code</a>
+                        <a href="/search"> Search a code</a>
                     </div>
                     </div> 
                     </>}
