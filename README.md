@@ -17,7 +17,7 @@ URQR makes your QR(Quick Response) code which can store your child's information
 <li>Designing new UX/UI for searching card page
 <li>[New features] Deleting a card (require a password)
 
-![image](https://user-images.githubusercontent.com/67844037/203667815-70bb2d7b-7384-46cb-9baf-36c60567a9f5.png)
+![image](https://user-images.githubusercontent.com/67844037/205468263-10bb6c28-e0d0-4b80-9de4-d6ff7b728060.png)
 
 ## 📚 What I’ve learned
 - Interacting with external libraries' framework (react-qr-code) and components
