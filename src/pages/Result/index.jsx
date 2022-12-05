@@ -113,7 +113,7 @@ function Result() {
                             <div className="form-group"/>
 
                             <div className="form-group">
-                                <a id="create-a" href="/"> Create new code</a>
+                                <a id="create-a" href="/create"> Create new code</a>
                             </div>
 
                             <div className="form-group">

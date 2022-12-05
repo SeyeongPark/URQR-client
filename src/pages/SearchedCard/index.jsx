@@ -6,17 +6,12 @@ import { useEffect } from 'react';
 function SearchedCard() {
 
     const API_BASE = "https://sptech-urqr-api.herokuapp.com";
-    const URL_BASE = "https://sptech-urqr.herokuapp.com";
-
-    const URL_SEARCH = URL_BASE + "/search";
-
 
     const [cardInfo, setCardInfo] = useState([])
     const [qrCode, setQrCode] = useState("")
     const { qrText } = useParams();
     const [isMobile, setIsMobile] = useState(false);
 
-    const URL_EDIT = URL_BASE + '/edit/' + qrText;
     const defaultImgUrl = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
 
     useEffect(() => {
@@ -108,11 +103,11 @@ function SearchedCard() {
                     <div className="form-group"/>
 
                     <div className="form-group">
-                        <a id="create-a" href={URL_BASE}> Create new code</a>
+                        <a id="create-a" href="/create"> Create new code</a>
                     </div>
 
                     <div className="form-group">
-                        <a id="edit-a" href={URL_EDIT}> Edit Card</a>
+                        <a id="edit-a" href={'/edit/' + qrText}> Edit Card</a>
                     </div>
 
                     <div className="form-group"/>
