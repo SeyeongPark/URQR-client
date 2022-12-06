@@ -1,6 +1,7 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React from 'react';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import './App.css';
-import './App-mobile.css'
+import './App-mobile.css';
 import ErrorPage from './pages/Error';
 
 import EditCard from './pages/Edit';
@@ -11,10 +12,10 @@ import SearchedCard from './pages/SearchedCard';
 import SampleFormImageUpload from './app/Sample/SampleFormImageUpload';
 import Main from './pages/Main';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-     <Router>
+      <Router>
         <Routes>
           <Route path='/error' element={<ErrorPage/>}/>
 
@@ -31,6 +32,6 @@ function App() {
       </Router>
     </div>
   );
-}
+};
 
 export default App;
