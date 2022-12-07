@@ -10,7 +10,7 @@ const InputData = (props) => {
   const today = new Date().toISOString().substring(0, 10);
   const currentDate = now + ' ' + today;
 
-  const API_BASE = 'https://sptech-urqr-api.herokuapp.com';
+  const API_BASE = process.env.REACT_APP_SERVER_API;
 
   const [card, setCard] = useState([]);
   const [codeText, setCodeText] = useState('');

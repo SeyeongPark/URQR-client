@@ -6,7 +6,7 @@ import QRCode from 'qrcode';
 import {useEffect} from 'react';
 
 const SearchedCard = () => {
-  const API_BASE = 'https://sptech-urqr-api.herokuapp.com';
+  const API_BASE = process.env.REACT_APP_SERVER_API;
 
   const [cardInfo, setCardInfo] = useState([]);
   const [qrCode, setQrCode] = useState('');
