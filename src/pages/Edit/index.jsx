@@ -12,7 +12,7 @@ now = + now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();
 const today = new Date().toISOString().substring(0, 10);
 const currentTime = now + ' ' + today;
 
-const API_BASE = 'https://sptech-urqr-api.herokuapp.com';
+const API_BASE = process.env.REACT_APP_SERVER_API;
 
 const EditCard = (props) => {
   const {qrText} = useParams();
@@ -40,16 +40,24 @@ const EditCard = (props) => {
   const checkPassword = async (e) => {
     e.preventDefault();
 
-    cardInfo.map((card) => {
-      if (inputPassword === card.password) {
-        setIsAuth(true);
-        setTextIsSamePassword('');
-      } else {
-        ElInputPassword.value = '';
-        setIsSamePassword('false');
-        setTextIsSamePassword('Try Again, it is wrong password');
-      }
-    });
+    // cardInfo.map(async (card) => {
+    const verifyPassword = await fetch(API_BASE + '/card/edit/login', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        cardCode: qrText,
+        password: inputPassword,
+      }),
+    }).then((res) => res.json());
+
+    if (!verifyPassword.error) {
+      setIsAuth(true);
+      setTextIsSamePassword('');
+    } else {
+      ElInputPassword.value = '';
+      setIsSamePassword('false');
+      setTextIsSamePassword('Try Again, it is wrong password');
+    };
   };
 
   return (

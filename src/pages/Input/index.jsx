@@ -10,7 +10,7 @@ const InputData = (props) => {
   const today = new Date().toISOString().substring(0, 10);
   const currentDate = now + ' ' + today;
 
-  const API_BASE = 'https://sptech-urqr-api.herokuapp.com';
+  const API_BASE = process.env.REACT_APP_SERVER_API;
 
   const [card, setCard] = useState([]);
   const [codeText, setCodeText] = useState('');
@@ -65,7 +65,10 @@ const InputData = (props) => {
     const data = await fetch(API_BASE + '/card/new', {
       method: 'POST',
       body: formData,
-    }).then(navigate(`/result`, {state: {qrText: code}}));
+    })
+        .then(setTimeout(function() {}, 400))
+        .then(navigate(`/result`, {state: {qrText: code}}));
+
 
     setCard([...card, data]);
     setCodeText('');
