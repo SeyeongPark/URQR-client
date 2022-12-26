@@ -6,12 +6,12 @@ import QRCode from 'qrcode';
 import {useEffect} from 'react';
 
 const SearchedCard = () => {
-  const API_BASE = 'https://sptech-urqr-api.herokuapp.com';
-
   const [cardInfo, setCardInfo] = useState([]);
   const [qrCode, setQrCode] = useState('');
   const {qrText} = useParams();
   const [isMobile, setIsMobile] = useState(false);
+
+  const API_BASE = process.env.REACT_APP_SERVER_API;
 
   const defaultImgUrl = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
 

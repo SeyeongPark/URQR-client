@@ -12,7 +12,7 @@ const SearchPage = () => {
 
   const navigate = useNavigate();
 
-  const API_BASE = 'https://sptech-urqr-api.herokuapp.com';
+  const API_BASE = process.env.REACT_APP_SERVER_API;
 
   const clickEventUp = (first, next, before) => {
     if (first?.length && next != null) {
