@@ -1,7 +1,7 @@
 {
   "name": "read-my-qr",
   "version": "0.1.0",
-  "homepage": "http://seyeongpark.github.io/urqr-client",
+  "homepage": "https://seyeongpark.github.io/urqr-client/",
   "private": true,
   "engines": {
     "node": "16.16.0",
