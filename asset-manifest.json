@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "//urqr/static/css/main.cc435e8c.css",
+    "main.js": "//urqr/static/js/main.c65ea221.js",
+    "static/media/wave-bg.png": "//urqr/static/media/wave-bg.bd34ef28c4c742e36539.png",
+    "index.html": "//urqr/index.html",
+    "main.cc435e8c.css.map": "//urqr/static/css/main.cc435e8c.css.map",
+    "main.c65ea221.js.map": "//urqr/static/js/main.c65ea221.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cc435e8c.css",
+    "static/js/main.c65ea221.js"
+  ]
+}
